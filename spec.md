@@ -98,4 +98,5 @@ After completing the meal, Lisa provides feedback to the assistant on how it wen
 #### Output: 
 - An updated profile that adjusts future recommendations.
 
+![Block Diagram of Cooking Assistant](Cooking Assistant Block Diagram.png)
   
