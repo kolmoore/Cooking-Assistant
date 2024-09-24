@@ -11,6 +11,9 @@ This project explores the boundaries of AI in daily life, particularly in the ki
 
 &nbsp;
 &nbsp;
+### GitHub Repository: [Cooking Assistant](https://github.com/kolmoore/Cooking-Assistant)
+&nbsp;
+&nbsp;
 
 # Task Vignettes
 
