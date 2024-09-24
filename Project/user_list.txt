@@ -1,0 +1,25 @@
+**Culinary Class Student Summary**
+
+1. **Name:** Alice Johnson
+   - **Food Preferences:** Italian cuisine, seafood, and desserts.
+   - **Dietary Restrictions:** Gluten-free.
+
+2. **Name:** Brian Smith
+   - **Food Preferences:** Asian cuisine, spicy dishes, and grilled meats.
+   - **Dietary Restrictions:** None.
+
+3. **Name:** Clara Martinez
+   - **Food Preferences:** Mediterranean cuisine, vegetarian dishes, and fresh salads.
+   - **Dietary Restrictions:** Lactose intolerant.
+
+4. **Name:** David Kim
+   - **Food Preferences:** Korean cuisine, BBQ, and fusion dishes.
+   - **Dietary Restrictions:** Peanut allergy.
+
+5. **Name:** Emily Thompson
+   - **Food Preferences:** French cuisine, pastries, and soups.
+   - **Dietary Restrictions:** Vegan.
+
+6. **Name:** Frank Gonzalez
+   - **Food Preferences:** Mexican cuisine, spicy foods, and street foods.
+   - **Dietary Restrictions:** Shellfish allergy.
