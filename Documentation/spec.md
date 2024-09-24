@@ -113,7 +113,7 @@ After completing the meal, Lisa provides feedback to the assistant on how it wen
 
 # Assistant Data Flow Block Diagram
 
-![Block Diagram of Cooking Assistant](/Cooking%20Assistant%20Block%20Diagram.png)
+![Block Diagram of Cooking Assistant](./Cooking%20Assistant%20Block%20Diagram.png)
   
 ## Block Descriptions
 
