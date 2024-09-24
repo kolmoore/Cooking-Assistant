@@ -110,7 +110,7 @@ After completing the meal, Lisa provides feedback to the assistant on how it wen
 
 # Assistant Data Flow Block Diagram
 
-![Block Diagram of Cooking Assistant](C:\Users\pnz1oes\OneDrive-Deere&Co\OneDrive - Deere & Co\Documents\GitHub\Cooking-Assistant\Cooking Assistant Block Diagram.png)
+![Block Diagram of Cooking Assistant](./Cooking%20Assistant%20Block%20Diagram.png)
   
 ## Block Descriptions
 
