@@ -1,0 +1,12 @@
+{
+    "Sarah": {
+        "dietary_restrictions": [
+            "vegan"
+        ],
+        "preferred_cuisine": "Mediterranean",
+        "cooking_tools": [
+            "slow cooker",
+            "blender"
+        ]
+    }
+}
