@@ -8,5 +8,15 @@
             "slow cooker",
             "blender"
         ]
+    },
+    "Kollin": {
+        "dietary_restrictions": [
+            "None"
+        ],
+        "preferred_cuisine": "American",
+        "cooking_tools": [
+            "convection oven",
+            "stovetop"
+        ]
     }
 }
