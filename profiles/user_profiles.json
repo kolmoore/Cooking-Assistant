@@ -13,10 +13,28 @@
         "dietary_restrictions": [
             "None"
         ],
-        "preferred_cuisine": "American",
+        "preferred_cuisine": [
+            "Burgers"
+        ],
         "cooking_tools": [
             "convection oven",
             "stovetop"
-        ]
+        ],
+        "": "Advanced"
+    },
+    "Steve": {
+        "dietary_restrictions": [
+            "Vegitarian"
+        ],
+        "preferred_cuisine": [
+            "Asian"
+        ],
+        "cooking_tools": [
+            "Wok"
+        ],
+        "preferences": [],
+        "cooking_levels": [],
+        "recipe_complexity": null,
+        "dietary_preferences": []
     }
 }
