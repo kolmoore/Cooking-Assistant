@@ -3,38 +3,43 @@
         "dietary_restrictions": [
             "vegan"
         ],
-        "preferred_cuisine": "Mediterranean",
-        "cooking_tools": [
+        "favorite_food": "Mediterranean",
+        "preferred_tools": [
             "slow cooker",
             "blender"
-        ]
+        ],
+        "skill_level": "Intermediate",
+        "recipe_complexity": null,
+        "preferred_ingredients": []
     },
     "Kollin": {
         "dietary_restrictions": [
             "None"
         ],
-        "preferred_cuisine": [
+        "favorite_food": [
             "Burgers"
         ],
-        "cooking_tools": [
+        "preferred_tools": [
             "convection oven",
             "stovetop"
         ],
-        "": "Advanced"
+        "skill_level": "Advanced",
+        "recipe_complexity": "Medium",
+        "preferred_ingredients": ["Meat"]
     },
     "Steve": {
         "dietary_restrictions": [
             "Vegitarian"
         ],
-        "preferred_cuisine": [
+        "favorite_food": [
             "Asian"
         ],
-        "cooking_tools": [
+        "preferred_tools": [
             "Wok"
         ],
         "preferences": [],
-        "cooking_levels": [],
+        "skill_level": [],
         "recipe_complexity": null,
-        "dietary_preferences": []
+        "preferred_ingredients": []
     }
 }

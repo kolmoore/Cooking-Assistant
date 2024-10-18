@@ -27,50 +27,129 @@ class Cooking_Assistant_App(tk.Tk):
         
         self.title("Smart Cooking Assistant")
 
+        # Create master frame
         self.frame = tk.Frame(self)
         self.frame.pack(padx=10, pady=10)
 
         self.title_label = tk.Label(self.frame, text="Welcome to the Smart Cooking Assistant!", font=("Helvetica", 16))
-        self.title_label.pack(pady=10)
+        self.title_label.grid(row=0,column=0,columnspan=2,pady=10)
 
-        self.control_frame = tk.Frame(self.frame)
-        self.control_frame.pack(padx=10,pady=10)
+        # Create assistant frame
+        self.assistant_frame = tk.Frame(self.frame)
+        self.assistant_frame.grid(row=1,column=0,padx=10,pady=10)
 
-        # Label to display the current profile
-        self.profile_label = tk.Label(self.control_frame, text="Current Profile: None", font=("Helvetica", 12))
-        self.profile_label.grid(row=0,column=0,pady=5)
-
-        self.select_button = tk.Button(self.control_frame, text="Select Profile", command=self.select_profile)
-        self.select_button.grid(row=0,column=1,pady=5)
-
-        self.create_button = tk.Button(self.control_frame, text="Create Profile", command=self.create_profile)
-        self.create_button.grid(row=0,column=2,pady=5)
-
-        self.view_button = tk.Button(self.control_frame, text="View Profiles", command=self.view_profiles_gui)
-        self.view_button.grid(row=0,column=3,pady=5)
-
-        self.update_button = tk.Button(self.control_frame, text="Update Profile", command=self.update_profile_gui)
-        self.update_button.grid(row=0,column=4,pady=5)
+        # Label for dialog box
+        self.dialog_box_label = tk.Label(self.assistant_frame, text="Dialog Box", font=("Helvetica", 14), justify='left')
+        self.dialog_box_label.grid(row=0,column=0,padx=5,pady=5)
 
         # Create a scrolled text area for displaying messages
-        self.text_area = scrolledtext.ScrolledText(self.frame, width=50, height=15, wrap=tk.WORD)
-        self.text_area.pack(pady=10)
+        self.dialog_textbox = scrolledtext.ScrolledText(self.assistant_frame, width=50, height=5, wrap=tk.WORD)
+        self.dialog_textbox.grid(row=1,column=0,columnspan=3,padx=10,pady=10)
+
+        # Label for input box
+        self.input_textbox_label = tk.Label(self.assistant_frame, text="Enter your Response:", font=("Helvetica", 14))
+        self.input_textbox_label.grid(row=2,column=0,padx=5,pady=5)
 
         # Create an editable text area for user input
-        self.input_text = tk.Text(self.frame, width=50, height=3, wrap=tk.WORD)
-        self.input_text.pack(pady=5)
+        self.input_textbox = tk.Text(self.assistant_frame, width=55, height=3, wrap=tk.WORD)
+        self.input_textbox.grid(row=3,column=0,columnspan=3,padx=10,pady=10)
+
+        # Create a get recipe button
+        self.get_recipe_button = tk.Button(self.assistant_frame, text="Get Recipe", command=self.provide_cooking_guidance)
+        self.get_recipe_button.grid(row=4,column=1,padx=10,pady=10)
 
         # Create a submit button
-        self.submit_button = tk.Button(self.frame, text="Submit Response", command=self.submit_response)
-        self.submit_button.pack(pady=5)
+        self.submit_button = tk.Button(self.assistant_frame, text="Submit Response", command=self.submit_response)
+        self.submit_button.grid(row=4,column=2,padx=10,pady=10)
 
-        self.exit_button = tk.Button(self.frame, text="Exit", command=self.quit)
-        self.exit_button.pack(pady=20)
+        #self.exit_button = tk.Button(self.assistant_frame, text="Exit", command=self.quit)
+        #self.exit_button.grid(row=3,column=2,padx=10,pady=10)
+
+        # Create Profile Frame
+        self.profile_frame = tk.Frame(self.frame)
+        self.profile_frame.grid(row=1,column=1,padx=10,pady=10)
+
+        # Label to display the profile box
+        self.profile_label = tk.Label(self.profile_frame, text="Profile Information", font=("Helvetica", 14))
+        self.profile_label.grid(row=0,padx=10,pady=10)
+
+        y = 3
+
+        # Label for the current username
+        self.username_label = tk.Label(self.profile_frame, text="Current User:", font=("Helvetica", 12))
+        self.username_label.grid(row=1,column=0,padx=10,pady=y)
+
+        # Value of the current username
+        self.username_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.username_value.grid(row=1,column=1,padx=10,pady=y)
+
+        # Label for the current dietary restrictions
+        self.dietary_restrictions_label = tk.Label(self.profile_frame, text="Dietary Restrictions:", font=("Helvetica", 12))
+        self.dietary_restrictions_label.grid(row=2,column=0,padx=10,pady=y)
+
+        # Value of the current dietary restrictions
+        self.dietary_restrictions_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12),width=15)
+        self.dietary_restrictions_value.grid(row=2,column=1,padx=10,pady=y)
+
+        # Label for the current favorite foods
+        self.favorite_food_label = tk.Label(self.profile_frame, text="Favorite Foods:", font=("Helvetica", 12))
+        self.favorite_food_label.grid(row=3,column=0,padx=10,pady=y)
+
+        # Value of the current favorite foods
+        self.favorite_food_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.favorite_food_value.grid(row=3,column=1,padx=10,pady=y)
+
+        # Label for the current preferred tools
+        self.prefered_tools_label = tk.Label(self.profile_frame, text="Preferred Tools:", font=("Helvetica", 12))
+        self.prefered_tools_label.grid(row=4,column=0,padx=10,pady=y)
+
+        # Value of the current preferred tools
+        self.prefered_tools_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.prefered_tools_value.grid(row=4,column=1,padx=10,pady=y)
+
+        # Label for the current preferred ingredients
+        self.prefered_ingredients_label = tk.Label(self.profile_frame, text="Preferred Ingredients:", font=("Helvetica", 12))
+        self.prefered_ingredients_label.grid(row=5,column=0,padx=10,pady=y)
+
+        # Value of the current preferred ingredients
+        self.prefered_ingredients_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.prefered_ingredients_value.grid(row=5,column=1,padx=10,pady=y)
+
+        # Label for the current skill level
+        self.skill_level_label = tk.Label(self.profile_frame, text="Skill Level:", font=("Helvetica", 12))
+        self.skill_level_label.grid(row=6,column=0,padx=10,pady=y)
+
+        # Value of the current skill level
+        self.skill_level_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.skill_level_value.grid(row=6,column=1,padx=10,pady=y)
+
+        # Label for the current recipe complexity
+        self.recipe_complexity_label = tk.Label(self.profile_frame, text="Recipe Complexity:", font=("Helvetica", 12))
+        self.recipe_complexity_label.grid(row=7,column=0,padx=10,pady=y)
+
+        # Value of the current recipe complexity
+        self.recipe_complexity_value = tk.Label(self.profile_frame, text="None", font=("Helvetica", 12))
+        self.recipe_complexity_value.grid(row=7,column=1,padx=10,pady=y)
+
+
+
+        self.select_button = tk.Button(self.profile_frame, text="Select Profile", command=self.select_profile)
+        self.select_button.grid(row=8,column=0,padx=10,pady=10)
+
+        self.create_button = tk.Button(self.profile_frame, text="Create Profile", command=self.create_profile)
+        self.create_button.grid(row=8,column=1,padx=10,pady=10)
+
+        #self.view_button = tk.Button(self.profile_frame, text="View Profiles", command=self.view_profiles_gui)
+        #self.view_button.grid(row=0,column=3,padx=10,pady=10)
+
+        self.update_button = tk.Button(self.profile_frame, text="Update Profile", command=self.update_profile_gui)
+        self.update_button.grid(row=8,column=2,padx=10,pady=15)
+
 
     def append_text(self, message):
         # Insert the message at the end of the text area
-        self.text_area.insert(tk.END, message + "\n")
-        self.text_area.see(tk.END)
+        self.dialog_textbox.insert(tk.END, message + "\n")
+        self.dialog_textbox.see(tk.END)
 
     def clear_text(self):
         # Insert the message at the end of the text area
@@ -87,39 +166,51 @@ class Cooking_Assistant_App(tk.Tk):
     
     def submit_response(self):
         """Handle the submission of user input."""
-        user_input = self.input_text.get("1.0", tk.END).strip()  # Get input from the text box
+        user_input = self.input_textbox.get("1.0", tk.END).strip()  # Get input from the text box
         if user_input:
             self.append_text(f"\nYou: {user_input}\n")  # Display user input in the scrolled text area
-            self.input_text.delete("1.0", tk.END)  # Clear the text box
+            self.input_textbox.delete("1.0", tk.END)  # Clear the text box
             # Process the input based on the current context
             match self.current_operation:
                 case 'select_profile':
                     self.username = user_input
                     self.append_text(f"Hello {self.username}!  It's a pleasure to assist you today!")
+                    self.display_profile_gui()
+                case 'create_profile':
+                    self.update_profile_gui
+                    self.save_profiles
+                    self.append_text(f"Profile for {self.username} created successfully.")
+                    self.display_profile_gui()
                 case 'profile_dr':
                     self.profiles[self.username]['dietary_restrictions'] = user_input
-                    self.save_profiles()
+                    self.save_profiles
                     self.append_text(f"Dietary Restrictions for '{self.username}' updated successfully.")
+                    self.display_profile_gui()
                 case 'profile_ff':
                     self.profiles[self.username]['favorite_food'] = user_input
-                    self.save_profiles()
+                    self.save_profiles
                     self.append_text(f"Favorite Food for '{self.username}' updated successfully.")
+                    self.display_profile_gui
                 case 'profile_pt':
                     self.profiles[self.username]['preferred_tools'] = user_input
-                    self.save_profiles()
+                    self.save_profiles
                     self.append_text(f"Preferred Tools for '{self.username}' updated successfully.")
+                    self.display_profile_gui
                 case 'profile_pi':
                     self.profiles[self.username]['preferred_ingredients'] = user_input
-                    self.save_profiles()
+                    self.save_profiles
                     self.append_text(f"Preferred Ingredients for '{self.username}' updated successfully.")
+                    self.display_profile_gui
                 case 'profile_sl':
-                    self.profiles[self.username][''] = user_input
-                    self.save_profiles()
+                    self.profiles[self.username]['skill_level'] = user_input
+                    self.save_profiles
                     self.append_text(f"Skill Level for '{self.username}' updated successfully.")
+                    self.display_profile_gui
                 case 'profile_rc':
                     self.profiles[self.username]['recipe_complexity'] = user_input
-                    self.save_profiles()
+                    self.save_profiles
                     self.append_text(f"Recipe Complexity for '{self.username}' updated successfully.")
+                    self.display_profile_gui
                 case 'update_profile':
                     match user_input:
                         case '1':
@@ -160,8 +251,6 @@ class Cooking_Assistant_App(tk.Tk):
             self.append_text(f"Profile for {self.username} already exists.")
             return None  
         
-        self.save_profiles()
-        self.append_text(f"Profile for {self.username} created successfully.")
 
     def view_profiles_gui(self):
         """Open a dialog to view existing profiles."""
@@ -172,6 +261,18 @@ class Cooking_Assistant_App(tk.Tk):
         
         profile_info = "\n".join([f"{name}:\n {details}" for name, details in profiles.items()])
         self.append_text("User Profiles: \n" + profile_info)
+
+    def display_profile_gui(self):
+
+        if self.username:
+            self.username_value.config(text=f"{self.username}")
+            self.dietary_restrictions_value.config(text=f"{self.profiles[self.username]['dietary_restrictions']}")
+            self.favorite_food_value.config(text=f"{self.profiles[self.username]['favorite_food']}")
+            self.prefered_tools_value.config(text=f"{self.profiles[self.username]['preferred_tools']}")
+            self.prefered_ingredients_value.config(text=f"{self.profiles[self.username]['preferred_ingredients']}")
+            self.skill_level_value.config(text=f"{self.profiles[self.username]['skill_level']}")
+            self.recipe_complexity_value.config(text=f"{self.profiles[self.username]['recipe_complexity']}")
+
 
     def update_profile_gui(self):
 
@@ -193,7 +294,7 @@ class Cooking_Assistant_App(tk.Tk):
 
     def update_dietrestrict(self):
             """Open a dialog to enter new user Dietary Restrictions."""
-            self.append_text(f"Hello {self.username}! Do you have any dietary restrictions we should know about?\n  Please enter multiple items seperated by a comma or press cancel to skip")
+            self.append_text(f"Hello {self.username}! Do you have any dietary restrictions we should consider?\n  Please enter multiple items seperated by a comma or press cancel to skip")
             self.current_operation = 'profile_dr'  # Set the current operation context
         
     def update_favorite_food(self):
@@ -306,10 +407,14 @@ class Cooking_Assistant_App(tk.Tk):
 
     def get_recipe_suggestions(self):
         """Get personalized recipe suggestions based on user profile."""
-        self.dietary_restrictions = self.user_profile.get('dietary_restrictions', [])
-        self.preferred_cuisine = self.user_profile.get('preferred_cuisine', "")
+        self.dietary_restrictions = self.profiles[self.username]['dietary_restrictions']
+        self.favorite_food = self.profiles[self.username]['favorite_food']
+        self.preferred_tools = self.profiles[self.username]['preferred_tools']
+        self.preferred_ingredients = self.profiles[self.username]['preferred_ingredients']
+        self.skill_level = self.profiles[self.username]['skill_level']
+        self.recipe_complexity = self.profiles[self.username]['recipe_complexity']
         
-        prompt = f"Suggest a recipe in {self.preferred_cuisine} cuisine for a {', '.join(self.dietary_restrictions)} meal. Include ingredients and steps."
+        prompt = f"Suggest a recipe in {self.favorite_food} cuisine for a {', '.join(self.dietary_restrictions)} meal. Provide a recipe title ## ingredients ## steps"
         
         headers = {
             'Authorization': f'Bearer {API_KEY}',
@@ -329,7 +434,7 @@ class Cooking_Assistant_App(tk.Tk):
             self.recipe_text = suggestions['choices'][0]['message']['content']
             
             # Parse the recipe text into structured format
-            return self.parse_recipe()
+            self.parse_recipe()
             
         except Exception as e:
             self.append_text(f"Error fetching recipes: {e}")
@@ -346,7 +451,7 @@ class Cooking_Assistant_App(tk.Tk):
         section = 'ingredients'
         for line in lines[1:]:
             line = line.strip()
-            if line.lower() == 'steps:':
+            if line.lower() == 'Cooking Steps:' or 'Steps':
                 section = 'steps'
                 continue
             elif line.lower() == 'ingredients:':
@@ -357,24 +462,21 @@ class Cooking_Assistant_App(tk.Tk):
             elif section == 'steps':
                 self.recipe_steps.append(line)
         
-        return {
-            'title': self.recipe_title,
-            'ingredients': self.recipe_ingredients,
-            'steps': self.recipe_steps
-        }
 
     def provide_cooking_guidance(self):
+
+        self.get_recipe_suggestions()
         """Provide step-by-step cooking guidance to the user."""
-        self.append_text(f"Starting recipe: {self.recipe['title']}\n")
+        self.append_text(f"Starting recipe: {self.recipe_title}\n")
         self.append_text("Ingredients:")
-        for ingredient in self.recipe['ingredients']:
-            self.append_text(f"- {ingredient}")
+        for ingredient in self.recipe_ingredients:
+            self.append_text(f"{ingredient}")
         
         self.append_text("\nCooking Steps:")
-        for index, step in enumerate(self.recipe['steps']):
+        for index, step in enumerate(self.recipe_steps):
             self.append_text(f"Step {index + 1}: {step}")
             # Wait for user input to proceed to the next step
-            self.ppend_text("Press Enter to continue to the next step...")
+            # self.append_text("Press Enter to continue to the next step...")
         
         self.append_text("\nCooking complete! Enjoy your meal!")
 
