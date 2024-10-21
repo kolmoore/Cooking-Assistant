@@ -1,0 +1,44 @@
+{
+    "Moore": {
+        "number_of_members": 2,
+        "members": [
+            {
+                "name": "Kollin",
+                "age": 37,
+                "dietary_restrictions": [
+                    "None"
+                ],
+                "favorite_foods": [
+                    "Burgers",
+                    "        Tacos"
+                ]
+            },
+            {
+                "name": "Piper",
+                "age": 6,
+                "dietary_restrictions": [
+                    "None"
+                ],
+                "favorite_foods": [
+                    "Mac and Cheese",
+                    "  Chicken Patties"
+                ]
+            }
+        ],
+        "kitchens": {
+            "Grill": {
+                "location": "Iowa",
+                "tools_available": [],
+                "ingredients_available": []
+            },
+            "Home": {
+                "location": "Illinois",
+                "tools_available": [
+                    "Stovetop",
+                    "  Convection Oven"
+                ],
+                "ingredients_available": []
+            }
+        }
+    }
+}
