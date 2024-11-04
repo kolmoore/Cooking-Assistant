@@ -10,8 +10,8 @@
                 ],
                 "favorite_foods": [
                     "Burgers",
-                    "         Tacos",
-                    " Pasta"
+                    " Tacos",
+                    "  Pasta"
                 ]
             },
             {
@@ -40,6 +40,34 @@
                 ],
                 "ingredients_available": []
             }
-        }
+        },
+        "saved_recipes": [
+            {
+                "title": "Recipe Name: Taco Spaghetti Burger Bowl",
+                "ingredients": [
+                    "",
+                    "",
+                    "- 1 lb ground beef",
+                    "- 1 packet of taco seasoning",
+                    "- 1 cup of water",
+                    "- 1 can of spaghetti sauce",
+                    "- 1 packet of spaghetti noodles",
+                    "- 1 cup of shredded cheddar cheese",
+                    "- 1 cup of shredded lettuce",
+                    "- 1/2 cup of diced tomatoes",
+                    "- 1/4 cup of diced onions",
+                    "- 1/4 cup of sliced olives",
+                    "- Sour cream (optional)",
+                    "- Guacamole (optional)",
+                    "- Burger buns (optional, if you prefer to have your meal as a burger)",
+                    ""
+                ],
+                "instructions": "\n1. In a large skillet, cook the ground beef over medium heat until browned. Drain any excess grease.\n\n2. Stir in the taco seasoning and water. Let it simmer for a few minutes until the sauce has thickened.\n\n3. While the beef is cooking, bring a large pot of water to a boil and cook the spaghetti noodles according to the package instructions. Drain the noodles and keep them warm.\n\n4. Heat the spaghetti sauce in a small saucepan over medium heat until it is hot.\n\n5. To assemble the bowls, start with a base of spaghetti noodles. Top with the taco-seasoned ground beef.\n\n6. Pour over some of the heated spaghetti sauce.\n\n7. Add a handful of shredded lettuce and sprinkle with diced tomatoes, onions, and olives.\n\n8. Sprinkle shredded cheese on top, and add a",
+                "servings": "4",
+                "prep_time": "10 minutes",
+                "cook_time": "15 minutes",
+                "rating": 4
+            }
+        ]
     }
 }
