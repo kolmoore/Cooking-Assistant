@@ -1,7 +1,15 @@
 import tkinter as tk
 from tkinter import ttk, simpledialog, messagebox, scrolledtext
 import json
+import requests
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+# Your OpenAI API key
+API_KEY = os.getenv('OPENAI_API_KEY')
+
 
 class SmartKitchenAssistantApp(tk.Tk):
     def __init__(self):
@@ -74,7 +82,7 @@ class SmartKitchenAssistantApp(tk.Tk):
         self.mm_button_frame = tk.Frame(self.main_menu_frame, relief='ridge',borderwidth=2)
         self.mm_button_frame.grid(row=8,column=0,columnspan=3, padx=10,pady=10)
 
-        self.get_recipe_button = tk.Button(self.mm_button_frame, text="Get Recipe", command=self.get_meal_plan)
+        self.get_recipe_button = tk.Button(self.mm_button_frame, text="Get Recipe", command=self.get_recipe)
         self.get_recipe_button.grid(row=0, column=0, padx=15, pady=10)
 
         self.get_meal_plan_button = tk.Button(self.mm_button_frame, text="Get Meal Plan", command=self.get_meal_plan)
@@ -306,7 +314,6 @@ class SmartKitchenAssistantApp(tk.Tk):
             self.kitchen_name_dropdown['values'] = list(self.family_profiles[family_name]["kitchens"].keys())
             self.kitchen_name_dropdown.set('')  # Clear the selection
 
-
     def update_family_dropdown(self):
         """Update the family dropdown with the names of available profiles."""
         self.family_name_dropdown['values'] = list(self.family_profiles.keys())
@@ -408,6 +415,130 @@ class SmartKitchenAssistantApp(tk.Tk):
     def get_meal_plan(self):
         # Placeholder for the get meal plan functionality
         print("Get Meal Plan button clicked")
+
+    def get_recipe(self):
+        """Get recipe based on family member preferences and selected meal type."""
+        family_name = self.family_name_variable.get()
+        member_name = self.family_member_variable.get()
+        meal_type = self.meal_type_variable.get()
+        complexity = self.meal_complexity_variable.get()
+
+        if family_name and member_name and meal_type and complexity:
+            # Get member's favorite foods and dietary restrictions
+            member_info = next((member for member in self.family_profiles[family_name]['members'] if member['name'] == member_name), None)
+            if member_info:
+                favorite_foods = ', '.join(member_info['favorite_foods'])
+                dietary_restrictions = ', '.join(member_info['dietary_restrictions'])
+
+                # Construct the prompt for the recipe request
+                prompt = (f"Please provide a recipe for {meal_type} that is "
+                        f"{complexity} and considers {member_name}'s favorite foods: {favorite_foods}. "
+                        f"Also, take into account any dietary restrictions: {dietary_restrictions}.")
+
+                # Simulate receiving a recipe response
+                recipe_response = self.request_recipe_from_api(prompt)
+                self.display_recipe(recipe_response)
+            else:
+                messagebox.showerror("Error", "Member information not found.")
+        else:
+            messagebox.showerror("Error", "Please select a family, member, meal type, and complexity.")
+
+    def request_recipe_from_api(self, prompt):
+        """Request a recipe from the OpenAI API using the provided prompt."""
+        api_url = "https://api.openai.com/v1/chat/completions"
+        
+        headers = {
+            "Authorization": f"Bearer {self.API_KEY}",  # Use the API_KEY variable
+            "Content-Type": "application/json"
+        }
+
+        # Construct the request payload
+        data = {
+            "model": "gpt-4",  # Specify the model you want to use
+            "messages": [
+                {"role": "user", "content": prompt}
+            ],
+            "max_tokens": 300,  # Adjust as necessary to get complete recipes
+            "temperature": 0.7  # Adjust the creativity of the response
+        }
+
+        try:
+            # Make the request to the OpenAI API
+            response = requests.post(api_url, headers=headers, json=data)
+            response.raise_for_status()  # Raise an error for bad responses
+
+            # Parse the response
+            response_data = response.json()
+            recipe_text = response_data['choices'][0]['message']['content']
+
+            # Assuming the response is formatted as a recipe text, you can further parse this if needed
+            return self.parse_recipe_response(recipe_text)
+
+        except requests.exceptions.RequestException as e:
+            messagebox.showerror("Error", f"An error occurred: {e}")
+            return None  # Return None in case of an error
+
+    def parse_recipe_response(self, response_text):
+        """Parse the recipe response text into a structured format."""
+        # This is a simple parser; you may want to enhance it based on how you format prompts
+        lines = response_text.strip().split('\n')
+        title = lines[0]  # Assuming the first line is the title
+        ingredients = []
+        instructions = []
+
+        # Simple logic to separate ingredients and instructions
+        in_ingredients = True
+        for line in lines[1:]:
+            if line.lower().startswith("ingredients:"):
+                in_ingredients = True
+                continue
+            elif line.lower().startswith("instructions:"):
+                in_ingredients = False
+                continue
+
+            if in_ingredients:
+                ingredients.append(line.strip())
+            else:
+                instructions.append(line.strip())
+
+        return {
+            "title": title,
+            "ingredients": ingredients,
+            "instructions": '\n'.join(instructions),
+            "servings": "4",  # Placeholder; adjust based on your needs
+            "prep_time": "10 minutes",  # Placeholder; adjust based on your needs
+            "cook_time": "15 minutes"  # Placeholder; adjust based on your needs
+        }
+
+    def display_recipe(self, recipe):
+        """Display the recipe in a new frame."""
+        # Create a new window for the recipe
+        recipe_window = tk.Toplevel(self)
+        recipe_window.title("Recipe Details")
+
+        # Recipe Title
+        title_label = tk.Label(recipe_window, text=recipe['title'], font=("Helvetica", 16, "bold"))
+        title_label.pack(pady=10)
+
+        # Ingredients
+        ingredients_label = tk.Label(recipe_window, text="Ingredients:", font=("Helvetica", 14))
+        ingredients_label.pack(anchor="w")
+        ingredients_text = tk.Text(recipe_window, height=5, width=50, wrap=tk.WORD)
+        ingredients_text.insert(tk.END, '\n'.join(recipe['ingredients']))
+        ingredients_text.config(state=tk.DISABLED)  # Make it read-only
+        ingredients_text.pack(pady=5)
+
+        # Instructions
+        instructions_label = tk.Label(recipe_window, text="Instructions:", font=("Helvetica", 14))
+        instructions_label.pack(anchor="w")
+        instructions_text = tk.Text(recipe_window, height=10, width=50, wrap=tk.WORD)
+        instructions_text.insert(tk.END, recipe['instructions'])
+        instructions_text.config(state=tk.DISABLED)  # Make it read-only
+        instructions_text.pack(pady=5)
+
+        # Serving Information
+        serving_info_label = tk.Label(recipe_window, text=f"Servings: {recipe['servings']}, Prep Time: {recipe['prep_time']}, Cook Time: {recipe['cook_time']}", font=("Helvetica", 12))
+        serving_info_label.pack(pady=10)
 
 # Initialize and run the application
 if __name__ == "__main__":
