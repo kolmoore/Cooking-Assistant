@@ -31,205 +31,46 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         self.title("Smart Kitchen Assistant")
 
-        # Create the sidebar frame
-        self.sidebar_frame = tk.Frame(self, width=200, bg="lightgrey")
-        self.sidebar_frame.pack(side=tk.LEFT, fill=tk.Y)
-
         # Create the main content frame
         self.main_content_frame = tk.Frame(self)
         self.main_content_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
-        # Add sidebar buttons
-        self.create_sidebar_buttons()
+        # Show the welcome screen initially
+        self.show_welcome_screen()
 
-        # Load profiles on startup
-        self.load_profiles()
-
-        # Initialize the main content
-        self.show_profile_section()
-
-
-    def create_sidebar_buttons(self):
-        """Create buttons for the sidebar."""
-        # Profile Button
-        profile_button = tk.Button(self.sidebar_frame, text="Profile", command=self.show_profile_section, font=("Helvetica", 16))
-        profile_button.pack(fill=tk.X)
-
-        # Recipes Button
-        recipes_button = tk.Button(self.sidebar_frame, text="Recipes", command=self.show_recipes_section, font=("Helvetica", 16))
-        recipes_button.pack(fill=tk.X)
-
-        # Meal Planning Button
-        meal_planning_button = tk.Button(self.sidebar_frame, text="Meal Planning", command=self.show_meal_planning_section, font=("Helvetica", 16))
-        meal_planning_button.pack(fill=tk.X)
-
-    def show_profile_section(self):
-        """Display the profile section in the main content area."""
-        # Clear main content area
+    def show_welcome_screen(self):
+        """Display the Welcome Screen."""
+        # Clear the main content area
         for widget in self.main_content_frame.winfo_children():
             widget.destroy()
 
-        # Profile Section UI
-        self.app_label = tk.Label(self.main_content_frame, text="Profile Menu", font=("Helvetica", 12, "bold"))
-        self.app_label.grid(row=0,column=0,columnspan=2,pady=10)
+        # Placeholder for the logo
+        logo_placeholder = tk.Label(self.main_content_frame, text="Cooking Assistant", font=("Helvetica", 32, "bold"))
+        logo_placeholder.grid(row=0, column=0, columnspan=2, pady=20)
 
-        # Family Profile Dropdown
-        self.prof_family_name_label = tk.Label(self.main_content_frame, text="Select Family:", font=("Helvetica", 12))
-        self.prof_family_name_label.grid(row=1,column=0,padx=10, pady=10)
-        
-        self.prof_family_name_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.family_name_variable, state='readonly')
-        self.prof_family_name_dropdown.bind("<<ComboboxSelected>>", self.update_family_members)
-        self.prof_family_name_dropdown.grid(row=1,column=1,padx=10, pady=10)
+        # Placeholder for the logo image
+        # logo_image = tk.PhotoImage(file="path/to/your/logo.png")  # Uncomment and set your logo path
+        # logo_label = tk.Label(self.main_content_frame, image=logo_image)
+        # logo_label.image = logo_image  # Keep a reference to avoid garbage collection
+        # logo_label.grid(row=0, column=0, columnspan=2, pady=20)
 
-        self.update_family_dropdown()
+        # Family Dropdown
+        self.family_name_variable = tk.StringVar()
+        self.family_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.family_name_variable, state='readonly')
+        self.family_dropdown['values'] = list(self.family_profiles.keys())  # Load family names
+        self.family_dropdown.set("Family")  # Default text
+        self.family_dropdown.grid(row=1, column=0, padx=10, pady=10)
 
-        # Family Member Dropdown
-        self.family_member_label = tk.Label(self.main_content_frame, text="Family Member:", font=("Helvetica", 12))
-        self.family_member_label.grid(row=2,column=0,padx=10, pady=10)
+        # "+" Button
+        add_family_button = tk.Button(self.main_content_frame, text="+", command=self.add_family, font=("Helvetica", 14))
+        add_family_button.grid(row=1, column=1, padx=10, pady=10)
 
-        self.family_member_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.member_name_variable, state='readonly')
-        self.family_member_dropdown.bind("<<ComboboxSelected>>", self.update_member_info)
-        self.family_member_dropdown.grid(row=2,column=1,padx=10, pady=10)
+        # Edit and Select Buttons
+        edit_button = tk.Button(self.main_content_frame, text="Edit", command=self.edit_profile, font=("Helvetica", 14))
+        edit_button.grid(row=2, column=0, padx=10, pady=10)
 
-        self.update_family_members(None)
-
-        # Editable Text Boxes for Family Member Info
-        self.age_label = tk.Label(self.main_content_frame, text="Member Age:", font=("Helvetica", 12))
-        self.age_label.grid(row=3,column=0,padx=10, pady=5)
-        self.age_entry = tk.Entry(self.main_content_frame)
-        self.age_entry.grid(row=3,column=1,padx=10,pady=10)
-
-        self.favorite_foods_label = tk.Label(self.main_content_frame, text="Favorite Foods:", font=("Helvetica", 12))
-        self.favorite_foods_label.grid(row=4,column=0,padx=10, pady=10)
-        self.favorite_foods_text = scrolledtext.ScrolledText(self.main_content_frame, width=40, height=2, wrap=tk.WORD)
-        self.favorite_foods_text.grid(row=5,column=0,columnspan=2,padx=10, pady=10)
-
-        self.dietary_restrictions_label = tk.Label(self.main_content_frame, text="Dietary Restrictions:", font=("Helvetica", 12))
-        self.dietary_restrictions_label.grid(row=6,column=0,padx=10, pady=10)
-        self.dietary_restrictions_text = scrolledtext.ScrolledText(self.main_content_frame, width=40, height=1, wrap=tk.WORD)
-        self.dietary_restrictions_text.grid(row=7,column=0,columnspan=2,padx=10, pady=10)
-
-        # Profile Menu Buttons
-
-        self.profile_button_frame = tk.Frame(self.main_content_frame, relief='ridge',borderwidth=2)
-        self.profile_button_frame.grid(row=8,column=0,columnspan=2,pady=10)
-
-
-        self.add_family_button = tk.Button(self.profile_button_frame, text="Add Family", command=self.add_family)
-        self.add_family_button.grid(row=0, column=0, padx=15, pady=10)
-
-        self.add_member_button = tk.Button(self.profile_button_frame, text="Add Member", command=self.add_member)
-        self.add_member_button.grid(row=0, column=1, padx=15, pady=10)
-
-        self.update_profile_button = tk.Button(self.profile_button_frame, text="Save Profile", command=self.save_profile)
-        self.update_profile_button.grid(row=0, column=2, padx=15, pady=10)
-
-        # Add more profile components here...
-
-    def show_recipes_section(self):
-        """Display the recipes section in the main content area."""
-        # Clear main content area
-        for widget in self.main_content_frame.winfo_children():
-            widget.destroy()
-
-        # Meal Planning Section UI
-        meal_planning_label = tk.Label(self.main_content_frame, text="Meal Planning Section", font=("Helvetica", 16))
-        meal_planning_label.grid(row=0,column=0,columnspan=2,padx=10,pady=10)
-
-        # Meal Type Dropdown
-        self.meal_type_label = tk.Label(self.main_content_frame, text="Meal Type:", font=("Helvetica", 12))
-        self.meal_type_label.grid(row=1,column=0,padx=10, pady=10)
-
-        self.meal_type_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.meal_type_variable)
-        self.meal_type_dropdown['values'] = ("Weekday Dinner", "Weekend Dinner", "Thanksgiving", "Birthday", "Football Game")
-        self.meal_type_dropdown.grid(row=1,column=1,padx=10, pady=10)
-
-        # Meal Complexity Dropdown
-        self.meal_complexity_label = tk.Label(self.main_content_frame, text="Meal Complexity:", font=("Helvetica", 12))
-        self.meal_complexity_label.grid(row=2,column=0,padx=10, pady=10)
-
-        self.meal_complexity_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.meal_complexity_variable)
-        self.meal_complexity_dropdown['values'] = ("Make it Easy", "Challenge Me", "Cook to Impress")
-        self.meal_complexity_dropdown.grid(row=2,column=1,padx=10, pady=10)
-
-
-        # Recipe Title
-        title_label = tk.Label(self.main_content_frame, text="Select a Recipe", font=("Helvetica", 12, "bold"))
-        title_label.grid(row=3,column=0, padx=10, pady=10)
-
-        # Ingredients
-        ingredients_label = tk.Label(self.main_content_frame, text="Ingredients:", font=("Helvetica", 12))
-        ingredients_label.grid(row=4,column=0,padx=10,pady=10)
-        ingredients_text = scrolledtext.ScrolledText(self.main_content_frame, width=40, height=2, wrap=tk.WORD)
-        ingredients_text.grid(row=5,column=0,columnspan=2,padx=10, pady=10)
-        ingredients_text.insert(tk.INSERT, ', '.join(self.recipe['ingredients']))
-
-        # Instructions
-        instructions_label = tk.Label(self.main_content_frame, text="Instructions:", font=("Helvetica", 12))
-        instructions_label.grid(row=6,column=0,padx=10,pady=10)
-        instructions_text = scrolledtext.ScrolledText(self.main_content_frame, height=1, width=40, wrap=tk.WORD)
-        instructions_text.insert(tk.END, self.recipe['instructions'])
-        instructions_text.grid(row=7,column=0,columnspan=2,padx=10,pady=10)
-
-        # Serving Information
-        #serving_info_label = tk.Label(self.main_content_frame, text=f"Servings: {self.recipe['servings']}, Prep Time: {self.recipe['prep_time']}, Cook Time: {self.recipe['cook_time']}", font=("Helvetica", 12))
-        #serving_info_label.grid(row=6, column=0, pady=10)
-
-        self.mm_button_frame = tk.Frame(self.main_content_frame, relief='ridge',borderwidth=2)
-        self.mm_button_frame.grid(row=8,column=0,columnspan=3, padx=10,pady=10)
-
-        self.get_recipe_button = tk.Button(self.mm_button_frame, text="Get Recipe", command=self.get_recipe)
-        self.get_recipe_button.grid(row=0, column=0, padx=15, pady=10)
-
-        self.get_grocery_list_button = tk.Button(self.mm_button_frame, text="Get Grocery List", command=self.get_meal_plan)
-        self.get_grocery_list_button.grid(row=0, column=2, padx=15, pady=10)
-        
-        # Rate and Save Button
-        rate_button = tk.Button(self.mm_button_frame, text="Save Recipe", command=lambda: self.rate_recipe(self.recipe))
-        rate_button.grid(row=0,column=3,padx=10,pady=10)
-
-    def show_meal_planning_section(self):
-        """Display the meal planning section in the main content area."""
-        # Clear main content area
-        for widget in self.main_content_frame.winfo_children():
-            widget.destroy()
-
-        # Meal Planning Section UI
-        self.app_label = tk.Label(self.main_content_frame, text="Meal Planning", font=("Helvetica", 12, "bold"))
-        self.app_label.grid(row=0,column=0,columnspan=2,pady=10)
-
-        # Meal Type Dropdown
-        self.meal_type_label = tk.Label(self.main_content_frame, text="Select Meal Type:", font=("Helvetica", 12))
-        self.meal_type_label.grid(row=2,column=0,padx=10, pady=10)
-
-        self.meal_type_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.meal_type_variable)
-        self.meal_type_dropdown['values'] = ("Weekday Dinner", "Weekend Dinner", "Thanksgiving", "Birthday", "Football Game")
-        self.meal_type_dropdown.grid(row=2,column=1,padx=10, pady=10)
-
-        # Meal Complexity Dropdown
-        self.meal_complexity_label = tk.Label(self.main_content_frame, text="Select Meal Complexity:", font=("Helvetica", 12))
-        self.meal_complexity_label.grid(row=3,column=0,padx=10, pady=10)
-
-        self.meal_complexity_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.meal_complexity_variable)
-        self.meal_complexity_dropdown['values'] = ("Make it Easy", "Challenge Me", "Cook to Impress")
-        self.meal_complexity_dropdown.grid(row=3,column=1,padx=10, pady=10)
-
-
-        self.previous_meals_label = tk.Label(self.main_content_frame, text="Previous Meals:", font=("Helvetica", 12))
-        self.previous_meals_label.grid(row=6,column=0,padx=10, pady=10)
-        self.previous_meals_text = scrolledtext.ScrolledText(self.main_content_frame, width=40, height=1, wrap=tk.WORD)
-        self.previous_meals_text.grid(row=7,column=0,columnspan=2,padx=10, pady=10)
-
-        # Main Menu Buttons
-
-        self.mm_button_frame = tk.Frame(self.main_content_frame, relief='ridge',borderwidth=2)
-        self.mm_button_frame.grid(row=8,column=0,columnspan=3, padx=10,pady=10)
-
-        self.get_meal_plan_button = tk.Button(self.mm_button_frame, text="Get Meal Plan", command=self.get_meal_plan)
-        self.get_meal_plan_button.grid(row=0, column=1, padx=15, pady=10)
-
-        self.get_grocery_list_button = tk.Button(self.mm_button_frame, text="Get Grocery List", command=self.get_meal_plan)
-        self.get_grocery_list_button.grid(row=0, column=2, padx=15, pady=10)
+        select_button = tk.Button(self.main_content_frame, text="Select", command=self.select_family, font=("Helvetica", 14))
+        select_button.grid(row=2, column=1, padx=10, pady=10)
 
     def update_family_dropdown(self):
         """Update the family dropdown with the names of available profiles."""
@@ -237,7 +78,6 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         if self.family_name_variable.get():
             self.prof_family_name_dropdown.set(self.family_name_variable.get())
-
 
     def add_family(self):
         """Add a new family profile."""
