@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-import bot_chat
+import archive.bot_chat as bot_chat
 
 # Function to submit message
 def submit_message():
