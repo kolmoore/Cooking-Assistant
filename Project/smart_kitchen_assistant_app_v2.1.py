@@ -11,7 +11,6 @@ load_dotenv()
 # Your OpenAI API key
 API_KEY = os.getenv('OPENAI_API_KEY')
 
-
 class SmartKitchenAssistantApp(tk.Tk):
     def __init__(self):
         super().__init__()
@@ -154,11 +153,11 @@ class SmartKitchenAssistantApp(tk.Tk):
 
 
         # Recipe List Label
-        recipe_listbox_label = tk.Label(self.main_content_frame, text="Title\t\tMain Ingredient\t\tComplexity\t\tType\t\tRating", font=("Helvetica", 12))
+        recipe_listbox_label = tk.Label(self.main_content_frame, text="Title\t\t\tMain Ingredient\t\tComplexity\t\tType\t\tRating", font=("Helvetica", 12))
         recipe_listbox_label.grid(row=4, column=0, columnspan=4, padx=10, pady=10)
 
         # Recipe List
-        self.recipe_listbox = tk.Listbox(self.main_content_frame, height=10, width=90, font=("Courier New", 12))
+        self.recipe_listbox = tk.Listbox(self.main_content_frame, height=10, width=100, font=("Courier New", 12))
         self.recipe_listbox.grid(row=5, column=0, columnspan=4, padx=10, pady=10)
 
         # Buttons
@@ -171,15 +170,18 @@ class SmartKitchenAssistantApp(tk.Tk):
         make_recipe_button = tk.Button(self.mm_button_frame, text="Make Recipe", command=self.make_recipe, font=("Helvetica", 14))
         make_recipe_button.grid(row=0, column=1, padx=15, pady=10)
 
-        # Remove Recipe Button
-        remove_recipe_button = tk.Button(self.mm_button_frame, text="Remove Recipe", command=self.remove_recipe, font=("Helvetica", 14))
+        remove_recipe_button = tk.Button(self.mm_button_frame, text="Remove Item", command=self.remove_recipe, font=("Helvetica", 14))
         remove_recipe_button.grid(row=0, column=2, padx=15, pady=10)
 
         get_meal_plan_button = tk.Button(self.mm_button_frame, text="Get Meal Plan", command=self.get_meal_plan, font=("Helvetica", 14))
-        get_meal_plan_button.grid(row=0, column=3, padx=15, pady=10)
+        get_meal_plan_button.grid(row=1, column=0, padx=15, pady=10)
+
+        get_meal_plan_button = tk.Button(self.mm_button_frame, text="View Meal Plan", command=self.view_meal_plan, font=("Helvetica", 14))
+        get_meal_plan_button.grid(row=1, column=1, padx=15, pady=10)
 
         get_grocery_list_button = tk.Button(self.mm_button_frame, text="Get Grocery List", command=self.get_grocery_list, font=("Helvetica", 14))
-        get_grocery_list_button.grid(row=0, column=4, padx=15, pady=10)
+        get_grocery_list_button.grid(row=1, column=2, padx=15, pady=10)
+
 
         self.populate_recipe_list()  
 
@@ -359,8 +361,8 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         # Populate the listbox with the filtered recipes
         for recipe in recipes:
-            title = recipe['title'][:20]  # Take the first 20 characters
-            recipe_info = f"{title:<20} {recipe['main_ingredient']:<20} {recipe['recipe_complexity']:<15} {recipe['recipe_type']:<20} {recipe['rating'] if recipe['rating'] else 'N/R'}"
+            title = recipe['title'][:30]  # Take the first 20 characters
+            recipe_info = f"{title:<29} {recipe['main_ingredient']:<20} {recipe['recipe_complexity']:<15} {recipe['recipe_type']:<20} {recipe['rating'] if recipe['rating'] else 'N/R'}"
             self.recipe_listbox.insert(tk.END, recipe_info)  # Insert formatted recipe information into the listbox
 
     def populate_member_list(self):
@@ -475,7 +477,7 @@ class SmartKitchenAssistantApp(tk.Tk):
         selected_index = self.recipe_listbox.curselection()
         if selected_index:
             selected_recipe_info = self.recipe_listbox.get(selected_index)
-            recipe_title = selected_recipe_info[0:20].strip()  # Extract the title (first 20 characters)
+            recipe_title = selected_recipe_info[0:30].strip()  # Extract the title (first 20 characters)
 
             # Confirm removal
             confirmation = messagebox.askyesno("Confirm Removal", f"Are you sure you want to remove '{recipe_title}'?")
@@ -508,7 +510,7 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         # Construct the request payload
         data = {
-            "model": "gpt-4",  # Specify the model you want to use
+            "model": "gpt-4o",  # Specify the model you want to use
             "messages": [
                 {"role": "user", "content": prompt}
             ],
@@ -574,7 +576,7 @@ class SmartKitchenAssistantApp(tk.Tk):
 
             # Create the new recipe dictionary
             new_recipe = {
-                "title": title[0:19],
+                "title": title[0:29].strip(),
                 "main_ingredient": main_ingredient,
                 "recipe_complexity": recipe_complexity,
                 "recipe_type": recipe_type,
@@ -670,7 +672,7 @@ class SmartKitchenAssistantApp(tk.Tk):
         if selected_index:
             selected_recipe_info = self.recipe_listbox.get(selected_index)
             # Extract the title from the selected entry
-            recipe_title = selected_recipe_info[0:20].strip()  # Assuming the title is the first word
+            recipe_title = selected_recipe_info[0:30].strip()  # Assuming the title is the first word
 
             # Find the full recipe details
             recipes = self.family_profiles[self.family_name].get("recipes", [])
@@ -715,7 +717,7 @@ class SmartKitchenAssistantApp(tk.Tk):
                 self.rating_slider.pack(pady=10)
 
                 # Closing button
-                close_button = tk.Button(recipe_window, text="Close", command=recipe_window.destroy)
+                close_button = tk.Button(recipe_window, text="Close", command=recipe_window.destroy, font=("Helvetica", 14))
                 close_button.pack(pady=10)
 
                 # Update the rating when the slider is adjusted
@@ -766,39 +768,255 @@ class SmartKitchenAssistantApp(tk.Tk):
             recipe_info = f"{recipe['title']:<20} {recipe['main_ingredient']:<20} {recipe['recipe_complexity']:<15} {recipe['recipe_type']:<20} {recipe['rating'] if recipe['rating'] else 'N/R'}"
             self.recipe_listbox.insert(tk.END, recipe_info)  # Insert formatted recipe information into the listbox
 
-    def get_meal_plan(self):
-        # Placeholder
-        return(1)
+    def create_meal_plan(self, window):
+        """Create a meal plan based on selected options."""
+        meal_type_1 = self.meal_type_variable_1.get()
+        meal_type_2 = self.meal_type_variable_2.get()
+        family_member = self.family_member_variable_plan.get()
+        keyword = self.keywords_entry.get().strip()
 
-    def get_grocery_list(self):
-        """Gather ingredients for the selected recipe and display the grocery list."""
-        # Get the selected recipe from the listbox
+        # Get the family name
+        family_name = self.family_name_variable.get()
+
+        if family_name in self.family_profiles:
+            meal_plan = {
+                "title": f"{meal_type_1}/{meal_type_2} Meal Plan",
+                "main_ingredient": "Various",  # Can be adjusted based on recipes
+                "recipe_complexity": "Average",  # Can be adjusted based on recipes
+                "recipe_type": "Meal Plan",
+                "rating": None,
+                "recipes": []  # This will hold the recipes for the meal plan
+            }
+
+            # Pull recipes from the family's profile based on selected criteria
+            recipes = self.family_profiles[family_name]['recipes']
+
+            # Filter recipes based on the meal types
+            filtered_recipes_1 = [r for r in recipes if meal_type_1 in r["recipe_type"]]
+            filtered_recipes_2 = [r for r in recipes if meal_type_2 in r["recipe_type"]]
+
+            # Ensure we have a total of 7 unique recipes
+            if len(filtered_recipes_1) > 0:
+                meal_plan['recipes'].append(filtered_recipes_1[0])  # Add one recipe of meal type 1
+
+            # Generate a new recipe
+            while len(meal_plan['recipes']) < 2:
+                # Prompt for new recipe generation
+                self.recipe_type_variable.set(meal_type_1) 
+                new_recipe = self.get_recipe()
+
+                filtered_recipes_1 = [r for r in recipes if meal_type_1 in r["recipe_type"]]
+                new_recipe = filtered_recipes_1[len(meal_plan['recipes'])]
+
+                # Add the new recipe to the meal plan
+                if new_recipe and new_recipe not in meal_plan['recipes']:
+                    meal_plan['recipes'].append(new_recipe)
+
+            if len(filtered_recipes_1) > 0:
+                meal_plan['recipes'].append(filtered_recipes_2[0])  # Add a recipe of meal type 2
+
+            # Generate a new recipe
+            while len(meal_plan['recipes']) < 4:
+                # Prompt for new recipe generation
+                self.recipe_type_variable.set(meal_type_2) 
+                new_recipe = self.get_recipe()
+
+                filtered_recipes_2 = [r for r in recipes if meal_type_2 in r["recipe_type"]]
+                new_recipe = filtered_recipes_2[len(meal_plan['recipes'])-2]
+
+                # Add the new recipe to the meal plan if it doesn't already exist
+                if new_recipe and new_recipe not in meal_plan['recipes']:
+                    meal_plan['recipes'].append(new_recipe)
+
+            # Save the meal plan to the family's profile
+            self.family_profiles[family_name].setdefault('recipes', []).append(meal_plan)
+            self.save_profiles()  # Save changes to profiles
+
+            # Populate recipe list to show the new meal plan
+            self.populate_recipe_list()  # Refresh the recipe list to show the new meal plan
+            messagebox.showinfo("Success", f"Meal Plan '{meal_plan['title']}' created successfully.")
+
+            window.destroy()  # Close the meal plan window
+        else:
+            messagebox.showerror("Error", "Selected family not found.")
+
+    def view_meal_plan(self):
+        """Show the details of the selected meal plan in a popup."""
+        # Get the selected meal plan from the listbox
         selected_index = self.recipe_listbox.curselection()
         if selected_index:
-            selected_recipe_info = self.recipe_listbox.get(selected_index)
-            # Extract the title from the selected entry
-            recipe_title = selected_recipe_info[0:20].strip()  # Trim spaces and get title
+            selected_meal_plan_info = self.recipe_listbox.get(selected_index)
+            meal_plan_title = selected_meal_plan_info.split()[0].strip()  # Extract the title
 
             # Find the family name
             family_name = self.family_name_variable.get()
 
-            # Find the full recipe details
+            # Find the full meal plan details
             if family_name in self.family_profiles:
-                recipes = self.family_profiles[family_name].get("recipes", [])
-                recipe = next((r for r in recipes if r['title'] == recipe_title), None)
-                if recipe:
-                    # Get the number of family members
-                    num_members = len(self.family_profiles[family_name]["members"])
+                meal_plans = self.family_profiles[family_name].get("recipes", [])
+                meal_plan = next((mp for mp in meal_plans if mp['title'].split()[0].strip()  == meal_plan_title), None)
+                if meal_plan:
+                    # Create a new window for the meal plan details
+                    meal_plan_window = tk.Toplevel(self)
+                    meal_plan_window.title(meal_plan['title'])
 
-                    # Prepare the grocery list
+                    # Display the first recipe
+                    self.current_recipe_index = 0  # Initialize the index
+                    self.current_meal_plan = meal_plan  # Store the meal plan for navigation
+                    recipe = meal_plan['recipes'][self.current_recipe_index]
+                    self.display_meal_plan_recipe(meal_plan_window, recipe)
+
+                    # Create a scale for the rating
+                    self.rating_slider = tk.Scale(meal_plan_window, from_=0, to=5, orient=tk.HORIZONTAL, tickinterval=1, length=300, sliderlength=20)
+                    # Set the default value based on the recipe rating
+                    current_rating = recipe['rating'] if recipe['rating'] is not None else 0  # N/R as 0
+                    self.rating_slider.set(current_rating)
+                    self.rating_slider.grid(row=5,pady=10,columnspan=3)
+
+
+                    # Previous Button
+                    previous_button = tk.Button(meal_plan_window, text="Previous", command=lambda: self.show_previous_recipe(meal_plan_window), font=("Helvetica", 14))
+                    previous_button.grid(row=6, column=0, pady=10)
+
+                    # Next Button
+                    next_button = tk.Button(meal_plan_window, text="Next", command=lambda: self.show_next_recipe(meal_plan_window), font=("Helvetica", 14))
+                    next_button.grid(row=6, column=2, pady=10)
+
+                    # Closing button
+                    close_button = tk.Button(meal_plan_window, text="Close", command=meal_plan_window.destroy, font=("Helvetica", 14))
+                    close_button.grid(row=6, column=1, pady=10)
+                else:
+                    messagebox.showerror("Error", "Meal Plan not found.")
+            else:
+                messagebox.showerror("Error", "Selected family not found.")
+        else:
+            messagebox.showerror("Error", "Please select a meal plan.")
+
+    def display_meal_plan_recipe(self, window, recipe):
+        """Display the details of the current recipe in the meal plan."""
+        # Clear previous details
+        for widget in window.winfo_children():
+            if isinstance(widget, tk.Text) or isinstance(widget, tk.Label):
+                widget.destroy()
+
+        # Title of the recipe
+        title_label = tk.Label(window, text=f"{recipe['recipe_type']} {self.current_recipe_index+1}:  {recipe['title']}", font=("Helvetica", 16, "bold"))
+        title_label.grid(row=0,column=0,columnspan=3,pady=10)
+
+        # Ingredients
+        ingredients_label = tk.Label(window, text="Ingredients:", font=("Helvetica", 14))
+        ingredients_label.grid(row=1,column=0,sticky="w")
+        ingredients_list = tk.Text(window, height=5, width=50, wrap=tk.WORD)
+        for ingredient in recipe['ingredients']:
+            ingredients_list.insert(tk.END, f"{ingredient['quantity']} of {ingredient['item']}\n")
+        ingredients_list.config(state=tk.DISABLED)  # Make it read-only
+        ingredients_list.grid(row=2,column=0,columnspan=3,pady=10)
+
+        # Instructions
+        instructions_label = tk.Label(window, text="Instructions:", font=("Helvetica", 14))
+        instructions_label.grid(row=3,column=0,sticky="w")
+        instructions_list = tk.Text(window, height=10, width=50, wrap=tk.WORD)
+        for step in recipe['instructions']:
+            instructions_list.insert(tk.END, f"{step}\n")
+        instructions_list.config(state=tk.DISABLED)  # Make it read-only
+        instructions_list.grid(row=4,column=0,columnspan=3,pady=10)
+
+    def show_previous_recipe(self, window):
+        """Show the previous recipe in the meal plan."""
+        if self.current_recipe_index > 0:
+            self.current_recipe_index -= 1
+            self.display_meal_plan_recipe(window, self.current_meal_plan['recipes'][self.current_recipe_index])
+
+    def show_next_recipe(self, window):
+        """Show the next recipe in the meal plan."""
+        if self.current_recipe_index < len(self.current_meal_plan['recipes']) - 1:
+            self.current_recipe_index += 1
+            self.display_meal_plan_recipe(window, self.current_meal_plan['recipes'][self.current_recipe_index])
+
+    def get_meal_plan(self):
+        """Show the Meal Plan selection popup."""
+        meal_plan_window = tk.Toplevel(self)
+        meal_plan_window.title("Create Meal Plan")
+
+        # Meal Type Dropdowns
+        meal_type_label_1 = tk.Label(meal_plan_window, text="Select Meal Type 1:", font=("Helvetica", 12))
+        meal_type_label_1.grid(row=0, column=0, padx=10, pady=10)
+
+        self.meal_type_variable_1 = tk.StringVar()
+        self.meal_type_dropdown_1 = ttk.Combobox(meal_plan_window, textvariable=self.meal_type_variable_1, state='readonly', font=("Helvetica", 12))
+        self.meal_type_dropdown_1['values'] = ["Breakfast", "Lunch", "Dinner"]  # Default options
+        self.meal_type_dropdown_1.set("Breakfast")  # Default to Breakfast
+        self.meal_type_dropdown_1.grid(row=0, column=1, padx=10, pady=10)
+
+        meal_type_label_2 = tk.Label(meal_plan_window, text="Select Meal Type 2:", font=("Helvetica", 12))
+        meal_type_label_2.grid(row=1, column=0, padx=10, pady=10)
+
+        self.meal_type_variable_2 = tk.StringVar()
+        self.meal_type_dropdown_2 = ttk.Combobox(meal_plan_window, textvariable=self.meal_type_variable_2, state='readonly', font=("Helvetica", 12))
+        self.meal_type_dropdown_2['values'] = ["Breakfast", "Lunch", "Dinner"]  # Default options
+        self.meal_type_dropdown_2.set("Dinner")  # Default to Dinner
+        self.meal_type_dropdown_2.grid(row=1, column=1, padx=10, pady=10)
+
+        # Family Member Dropdown
+        family_member_label = tk.Label(meal_plan_window, text="Select Family Member:", font=("Helvetica", 12))
+        family_member_label.grid(row=2, column=0, padx=10, pady=10)
+
+        self.family_member_variable_plan = tk.StringVar()
+        self.family_member_dropdown_plan = ttk.Combobox(meal_plan_window, textvariable=self.family_member_variable_plan, state='readonly', font=("Helvetica", 12))
+        self.family_member_dropdown_plan['values'] = ["All"] + [member['name'] for member in self.family_profiles[self.family_name_variable.get()]['members']]
+        self.family_member_dropdown_plan.set("All")  # Default to All
+        self.family_member_dropdown_plan.grid(row=2, column=1, padx=10, pady=10)
+
+        # Meal Plan Keywords
+        keywords_label = tk.Label(meal_plan_window, text="Meal Plan Keywords:", font=("Helvetica", 12))
+        keywords_label.grid(row=3, column=0, padx=10, pady=10)
+
+        self.keywords_entry = tk.Entry(meal_plan_window, font=("Helvetica", 12))
+        self.keywords_entry.insert(0, "Low Carb")  # Default keyword
+        self.keywords_entry.grid(row=3, column=1, padx=10, pady=10)
+
+        # OK Button
+        ok_button = tk.Button(meal_plan_window, text="OK", command=lambda: self.create_meal_plan(meal_plan_window), font=("Helvetica", 14))
+        ok_button.grid(row=4, column=0, columnspan=2, pady=10)
+
+    def get_grocery_list(self):
+        """Gather ingredients for the selected recipe or meal plan and display the grocery list."""
+        # Get the selected item from the listbox
+        selected_index = self.recipe_listbox.curselection()
+        if selected_index:
+            selected_info = self.recipe_listbox.get(selected_index)
+            # Extract the title from the selected entry
+            title = selected_info.split()[0].strip()  # Assuming the title is the first word
+
+            # Find the family name
+            family_name = self.family_name_variable.get()
+
+            if family_name in self.family_profiles:
+                # Check if the selected item is a meal plan
+                meal_plans = [recipe for recipe in self.family_profiles[family_name]['recipes'] if recipe['recipe_type'] == 'Meal Plan']
+                meal_plan = next((mp for mp in meal_plans if mp['title'].startswith(title)), None)
+
+                if meal_plan:
+                    # Gather ingredients for all recipes in the meal plan
                     grocery_list = []
-                    for ingredient in recipe['ingredients']:
-                        ingredient_quantity = ingredient['quantity']
-                        # Assuming the quantity is in grams or similar, adjust for family size
-                        # Here we will assume the quantity is a string that can be converted to a number
-                        quantity_value = float(ingredient_quantity.split(' ')[0])  # Remove unit (assuming it's in grams, e.g., "500g")
-                        quantity_unit = str(ingredient_quantity.split(' ')[1])
-                        grocery_list.append(f"{quantity_value} {quantity_unit} of {ingredient['item']}")
+                    for recipe in meal_plan['recipes']:
+                        for ingredient in recipe['ingredients']:
+                            grocery_list.append(f"{ingredient['quantity']} of {ingredient['item']}")
+                    
+                    # Combine ingredients with the same units
+                    grocery_list_dict = {}
+                    for item in grocery_list:
+                        quantity, ingredient_name = item.split(' ', 1)  # Split into quantity and ingredient name
+                        unit = quantity.split()[-1]  # Get the unit from the quantity (e.g., "500g")
+                        quantity_value = ' '.join(quantity.split()[:-1])  # Get the numeric part of the quantity
+                        # Create a unique key for the ingredient based on name and unit
+                        key = (ingredient_name.strip(), unit)
+                        
+                        if key in grocery_list_dict:
+                            # Append to existing entry
+                            grocery_list_dict[key] += f", {quantity_value}"
+                        else:
+                            grocery_list_dict[key] = quantity_value
 
                     # Create a popup window to display the grocery list
                     grocery_window = tk.Toplevel(self)
@@ -810,20 +1028,50 @@ class SmartKitchenAssistantApp(tk.Tk):
 
                     # Display ingredients in a text area
                     grocery_text = tk.Text(grocery_window, height=10, width=40, wrap=tk.WORD)
-                    for item in grocery_list:
-                        grocery_text.insert(tk.END, item + "\n")
+                    for (ingredient, unit), quantity in grocery_list_dict.items():
+                        grocery_text.insert(tk.END, f"{quantity} {unit} of {ingredient}\n")
                     grocery_text.config(state=tk.DISABLED)  # Make it read-only
                     grocery_text.pack(pady=5)
 
                     # Closing button
                     close_button = tk.Button(grocery_window, text="Close", command=grocery_window.destroy)
                     close_button.pack(pady=10)
+
                 else:
-                    messagebox.showerror("Error", "Recipe not found.")
+                    # Check if the selected item is a recipe
+                    recipes = self.family_profiles[family_name].get("recipes", [])
+                    recipe = next((r for r in recipes if r['title'].startswith(title)), None)
+
+                    if recipe:
+                        # Prepare the grocery list for the selected recipe
+                        grocery_list = []
+                        for ingredient in recipe['ingredients']:
+                            grocery_list.append(f"{ingredient['quantity']} of {ingredient['item']}")
+
+                        # Create a popup window to display the grocery list
+                        grocery_window = tk.Toplevel(self)
+                        grocery_window.title("Grocery List")
+
+                        # Grocery List Header
+                        header_label = tk.Label(grocery_window, text="Grocery List", font=("Helvetica", 16, "bold"))
+                        header_label.pack(pady=10)
+
+                        # Display ingredients in a text area
+                        grocery_text = tk.Text(grocery_window, height=10, width=40, wrap=tk.WORD)
+                        for item in grocery_list:
+                            grocery_text.insert(tk.END, item + "\n")
+                        grocery_text.config(state=tk.DISABLED)  # Make it read-only
+                        grocery_text.pack(pady=5)
+
+                        # Closing button
+                        close_button = tk.Button(grocery_window, text="Close", command=grocery_window.destroy)
+                        close_button.pack(pady=10)
+                    else:
+                        messagebox.showerror("Error", "Recipe not found.")
             else:
                 messagebox.showerror("Error", "Selected family not found.")
         else:
-            messagebox.showerror("Error", "Please select a recipe.")
+            messagebox.showerror("Error", "Please select a recipe or meal plan.")
 
     def load_profiles(self):
         """Load profiles from a JSON file."""
@@ -908,7 +1156,7 @@ class SmartKitchenAssistantApp(tk.Tk):
         restriction = self.dietary_restrictions_dropdown.get()
         if restriction in member_info['dietary_restrictions']:
             member_info['dietary_restrictions'].remove(restriction)  # Remove from member profile
-            self.populate_member_names_dropdown()  # Optionally refresh the dropdown values
+            self.dietary_restrictions_dropdown.set('')  # Reset dropdown selection
 
     def add_favorite_food(self, member_info):
         food = self.favorite_foods_variable.get()
@@ -927,7 +1175,7 @@ class SmartKitchenAssistantApp(tk.Tk):
         food = self.favorite_foods_dropdown.get()
         if food in member_info['favorite_foods']:
             member_info['favorite_foods'].remove(food)  # Remove from member profile
-            self.populate_member_names_dropdown()  # Optionally refresh the dropdown values
+            self.favorite_foods_variable.set('')  # Reset dropdown selection
 
     def save_member(self, member_info,window):
         member_name = self.member_name_entry.get().strip()
@@ -1007,9 +1255,12 @@ class SmartKitchenAssistantApp(tk.Tk):
                 self.dietary_restrictions_dropdown.set("All")  # Default to "All"
                 self.dietary_restrictions_dropdown.grid(row=2, column=1, padx=10, pady=10)
 
+                add_dietary_button = tk.Button(edit_member_window, text="+", command=lambda: self.add_dietary_restriction(member_info), font=("Helvetica", 12))
+                add_dietary_button.grid(row=2, column=2, padx=10, pady=10)
+
                 # Remove Dietary Restriction Button
                 remove_dietary_button = tk.Button(edit_member_window, text="-", command=lambda: self.remove_dietary_restriction(member_info), font=("Helvetica", 12))
-                remove_dietary_button.grid(row=2, column=2, padx=10, pady=10)
+                remove_dietary_button.grid(row=2, column=3, padx=10, pady=10)
 
                 # Custom Dietary Restriction Entry
                 tk.Label(edit_member_window, text="Custom Dietary Restriction:", font=("Helvetica", 14)).grid(row=3, column=0, padx=10, pady=10)
@@ -1022,13 +1273,16 @@ class SmartKitchenAssistantApp(tk.Tk):
                 # Favorite Foods Dropdown
                 tk.Label(edit_member_window, text="Favorite Foods:", font=("Helvetica", 14)).grid(row=4, column=0, padx=10, pady=10)
                 self.favorite_foods_dropdown = ttk.Combobox(edit_member_window, textvariable=self.favorite_foods_variable, state='readonly', font=("Helvetica", 12))
-                self.favorite_foods_dropdown['values'] = ["All"] + member_info['favorite_foods'] + ["Burgers", "Tacos", ] # Prepopulate with the user's favorite foods
+                self.favorite_foods_dropdown['values'] = ["All"] + member_info['favorite_foods'] # Prepopulate with the user's favorite foods
                 self.favorite_foods_dropdown.set("All")  # Default to "All"
                 self.favorite_foods_dropdown.grid(row=4, column=1, padx=10, pady=10)
 
+                add_favorite_button = tk.Button(edit_member_window, text="+", command=lambda: self.add_favorite_food(member_info), font=("Helvetica", 12))
+                add_favorite_button.grid(row=4, column=2, padx=10, pady=10)
+
                 # Remove Favorite Food Button
                 remove_favorite_button = tk.Button(edit_member_window, text="-", command=lambda: self.remove_favorite_food(member_info), font=("Helvetica", 12))
-                remove_favorite_button.grid(row=4, column=2, padx=10, pady=10)
+                remove_favorite_button.grid(row=4, column=3, padx=10, pady=10)
 
                 # Custom Favorite Food Entry
                 tk.Label(edit_member_window, text="Custom Favorite Food:", font=("Helvetica", 14)).grid(row=5, column=0, padx=10, pady=10)
@@ -1040,7 +1294,7 @@ class SmartKitchenAssistantApp(tk.Tk):
 
                 # Save Member Button
                 save_member_button = tk.Button(edit_member_window, text="Save Member", command=lambda: self.save_member(member_info,edit_member_window), font=("Helvetica", 14))
-                save_member_button.grid(row=6, column=0, columnspan=3, padx=10, pady=10)
+                save_member_button.grid(row=6, column=0, columnspan=4, padx=10, pady=10)
 
     def remove_member(self):
         """Remove the selected family member."""

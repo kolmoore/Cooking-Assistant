@@ -30,7 +30,8 @@
             {
                 "dietary_restrictions": [],
                 "favorite_foods": [
-                    "Bacon"
+                    "Bacon",
+                    "Burgers"
                 ],
                 "name": "Kollin",
                 "age": 37
@@ -110,399 +111,217 @@
                 ]
             },
             {
-                "title": "Mac and Cheese",
-                "main_ingredient": "Pasta",
-                "recipe_complexity": "Easy",
-                "recipe_type": "Weekday Dinner",
-                "rating": null,
-                "ingredients": [
-                    {
-                        "item": "Macaroni",
-                        "quantity": "200 g"
-                    },
-                    {
-                        "item": "Cheddar Cheese",
-                        "quantity": "150 g"
-                    },
-                    {
-                        "item": "Milk",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Butter",
-                        "quantity": "2 tbsp"
-                    },
-                    {
-                        "item": "Flour",
-                        "quantity": "2 tbsp"
-                    }
-                ],
-                "instructions": [
-                    "Cook macaroni according to package instructions.",
-                    "In a saucepan, melt butter and whisk in flour to make a roux.",
-                    "Gradually add milk, stirring until thickened.",
-                    "Stir in cheese until melted, then mix with cooked macaroni."
-                ]
-            },
-            {
-                "title": "Vegetable Stir Fry",
-                "main_ingredient": "Mixed Vegetables",
-                "recipe_complexity": "Easy",
-                "recipe_type": "Dinner",
-                "rating": null,
-                "ingredients": [
-                    {
-                        "item": "Mixed Vegetables",
-                        "quantity": "500 g"
-                    },
-                    {
-                        "item": "Soy Sauce",
-                        "quantity": "50 ml"
-                    },
-                    {
-                        "item": "Garlic",
-                        "quantity": "2 cloves"
-                    },
-                    {
-                        "item": "Ginger",
-                        "quantity": "1 tbsp"
-                    },
-                    {
-                        "item": "Oil",
-                        "quantity": "2 tbsp"
-                    }
-                ],
-                "instructions": [
-                    "Heat oil in a large wok or frying pan.",
-                    "Add finely chopped garlic and ginger and saut\u00e9 until fragrant.",
-                    "Add the vegetables and stir fry for about 5-7 minutes until they are tender.",
-                    "Add soy sauce and stir well to coat all the vegetables.",
-                    "Serve hot with rice or noodles."
-                ]
-            },
-            {
-                "title": "Scrambled Eggs with",
-                "main_ingredient": "Eggs",
-                "recipe_complexity": "Easy",
-                "recipe_type": "Breakfast",
-                "rating": 3,
-                "ingredients": [
-                    {
-                        "item": "Eggs",
-                        "quantity": "8"
-                    },
-                    {
-                        "item": "Milk",
-                        "quantity": "1/4 cup"
-                    },
-                    {
-                        "item": "Butter",
-                        "quantity": "2 tbsp"
-                    },
-                    {
-                        "item": "Salt",
-                        "quantity": "1/2 tsp"
-                    },
-                    {
-                        "item": "Pepper",
-                        "quantity": "1/4 tsp"
-                    },
-                    {
-                        "item": "Bread",
-                        "quantity": "4 slices"
-                    },
-                    {
-                        "item": "Butter for toast",
-                        "quantity": "To taste"
-                    }
-                ],
-                "instructions": [
-                    "In a bowl, beat eggs with milk, salt, and pepper until well combined.",
-                    "Heat butter in a non-stick skillet over medium heat.",
-                    "Add the egg mixture to the skillet. Cook while stirring gently until eggs are set.",
-                    "Toast bread slices and spread butter over them.",
-                    "Serve the scrambled eggs with the buttered toast."
-                ]
-            },
-            {
-                "title": "Football Game Night",
-                "main_ingredient": "Anything",
-                "recipe_complexity": "Hard",
-                "recipe_type": "Football Game",
-                "rating": null,
-                "ingredients": [
-                    {
-                        "item": "Pizza Dough",
-                        "quantity": "1 batch"
-                    },
-                    {
-                        "item": "Pizza Sauce",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Mozzarella Cheese",
-                        "quantity": "2 cups"
-                    },
-                    {
-                        "item": "Your Choice of Toppings",
-                        "quantity": "As needed"
-                    }
-                ],
-                "instructions": [
-                    "Preheat your oven to 250\u00b0C (475\u00b0F). If you have a pizza stone, place it in the oven as it heats.",
-                    "Roll out your pizza dough on a floured surface to your desired thickness. If you like a crispy crust, go thin!",
-                    "If you are using a pizza stone, transfer the rolled dough onto a piece of parchment paper. If not, place it onto a greased baking sheet.",
-                    "Spread your pizza sauce evenly over the dough, leaving a small border around the edges for the crust.",
-                    "Sprinkle the mozzarella cheese evenly over the sauce.",
-                    "Add your choice of toppings. This could be anything the family likes, or even different toppings on different halves or quarters of the pizza to please everyone.",
-                    "Carefully transfer the pizza (and parchment paper, if using) onto the preheated pizza stone or baking sheet in the oven.",
-                    "Bake for 12-15 minutes, or until the cheese is bubbly and slightly golden and the crust is cooked to your liking.",
-                    "Let the pizza cool for a few minutes before slicing and serving. Enjoy your Football Game Night Pizza!"
-                ]
-            },
-            {
-                "title": "Grilled Cheese Sand",
-                "main_ingredient": "Cheese",
-                "recipe_complexity": "Easy",
-                "recipe_type": "Grilled",
-                "rating": null,
-                "ingredients": [
-                    {
-                        "item": "Bread",
-                        "quantity": "8 slices"
-                    },
-                    {
-                        "item": "Cheese",
-                        "quantity": "8 slices"
-                    },
-                    {
-                        "item": "Butter",
-                        "quantity": "4 tbsp"
-                    }
-                ],
-                "instructions": [
-                    "Preheat your grill to medium heat.",
-                    "Butter one side of each slice of bread.",
-                    "Place one slice of cheese between two slices of bread, with the buttered sides facing out.",
-                    "Grill each sandwich for 2-3 minutes on each side, until the bread is golden brown and the cheese is melted.",
-                    "Serve warm."
-                ]
-            },
-            {
-                "title": "Homemade Crepes wit",
-                "main_ingredient": "Flour",
-                "recipe_complexity": "Hard",
-                "recipe_type": "Breakfast",
-                "rating": null,
-                "ingredients": [
-                    {
-                        "item": "Flour",
-                        "quantity": "2 cups"
-                    },
-                    {
-                        "item": "Eggs",
-                        "quantity": "4"
-                    },
-                    {
-                        "item": "Milk",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Water",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Salt",
-                        "quantity": "1/2 tsp"
-                    },
-                    {
-                        "item": "Butter",
-                        "quantity": "4 tbsp"
-                    },
-                    {
-                        "item": "Assorted Fillings (Sweet or Savoury)",
-                        "quantity": "As per preference"
-                    }
-                ],
-                "instructions": [
-                    "In a large mixing bowl, whisk together the flour and the eggs.",
-                    "Gradually add in the milk and water, stirring to combine.",
-                    "Add the salt and butter; beat until smooth.",
-                    "Heat a lightly oiled griddle or frying pan over medium high heat.",
-                    "Pour or scoop the batter onto the griddle, using approximately 1/4 cup for each crepe.",
-                    "Tilt the pan with a circular motion so that the batter coats the surface evenly.",
-                    "Cook the crepe for about 2 minutes, until the bottom is light brown.",
-                    "Loosen with a spatula, turn and cook the other side.",
-                    "Serve hot with favorite fillings like Nutella, fruits, cheese or ham."
-                ]
-            },
-            {
-                "title": "Breakfast Quiche",
-                "main_ingredient": "Eggs",
-                "recipe_complexity": "Hard",
-                "recipe_type": "Breakfast",
-                "rating": 4,
-                "ingredients": [
-                    {
-                        "item": "Pie Crust",
-                        "quantity": "1"
-                    },
-                    {
-                        "item": "Eggs",
-                        "quantity": "4"
-                    },
-                    {
-                        "item": "Heavy Cream",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Shredded Cheese",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Bacon",
-                        "quantity": "6 slices"
-                    },
-                    {
-                        "item": "Green Bell Pepper",
-                        "quantity": "1"
-                    },
-                    {
-                        "item": "Onion",
-                        "quantity": "1"
-                    },
-                    {
-                        "item": "Salt",
-                        "quantity": "1 tsp"
-                    },
-                    {
-                        "item": "Black Pepper",
-                        "quantity": "1 tsp"
-                    }
-                ],
-                "instructions": [
-                    "Preheat your oven to 190\u00b0C (375\u00b0F).",
-                    "Fry the bacon until crispy, remove from pan and chop into small pieces.",
-                    "In the same pan, saut\u00e9 diced onion and bell pepper until soft.",
-                    "In a large bowl, beat eggs and add heavy cream, salt, and pepper.",
-                    "Add the bacon, saut\u00e9ed vegetables, and cheese to the egg mixture and stir to combine.",
-                    "Pour the egg mixture into the pie crust and bake for 35-45 minutes until the quiche is set and lightly browned.",
-                    "Let the quiche cool for a few minutes before cutting into slices and serving."
-                ]
-            },
-            {
-                "title": "Breakfast Pancakes",
-                "main_ingredient": "Anything",
-                "recipe_complexity": "Medium",
-                "recipe_type": "Breakfast",
-                "rating": 3,
-                "ingredients": [
-                    {
-                        "item": "All-purpose flour",
-                        "quantity": "2 Cups"
-                    },
-                    {
-                        "item": "Baking powder",
-                        "quantity": "2 tsp"
-                    },
-                    {
-                        "item": "Salt",
-                        "quantity": "1/2 tsp"
-                    },
-                    {
-                        "item": "Sugar",
-                        "quantity": "1 tbsp"
-                    },
-                    {
-                        "item": "Milk",
-                        "quantity": "1 1/2 cups"
-                    },
-                    {
-                        "item": "Eggs",
-                        "quantity": "2"
-                    },
-                    {
-                        "item": "Melted butter",
-                        "quantity": "2 tbsp"
-                    },
-                    {
-                        "item": "Vanilla Extract",
-                        "quantity": "1 tsp"
-                    }
-                ],
-                "instructions": [
-                    "In a large bowl, mix together flour, baking powder, salt, and sugar.",
-                    "In another bowl, whisk together milk, eggs, melted butter, and vanilla extract.",
-                    "Pour the wet ingredients into the dry ingredients and gently mix until combined. Do not overmix.",
-                    "Heat a large skillet or griddle over medium heat and lightly grease.",
-                    "Pour 1/4 cup of pancake batter onto the skillet. Cook until bubbles form on the surface, then flip and cook until golden brown.",
-                    "Serve pancakes with your family\u2019s favorite toppings such as syrup, fruits, or whipped cream."
-                ]
-            },
-            {
-                "title": "Breakfast Souffl\u00e9 O",
-                "main_ingredient": "Eggs",
-                "recipe_complexity": "Hard",
-                "recipe_type": "Breakfast",
-                "rating": 0,
-                "ingredients": [
-                    {
-                        "item": "Eggs",
-                        "quantity": "8"
-                    },
-                    {
-                        "item": "Butter",
-                        "quantity": "4 tbsp"
-                    },
-                    {
-                        "item": "Cheese",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Spinach",
-                        "quantity": "1/2 cup"
-                    },
-                    {
-                        "item": "Mushrooms",
-                        "quantity": "1/2 cup"
-                    },
-                    {
-                        "item": "Salt",
-                        "quantity": "To taste"
-                    },
-                    {
-                        "item": "Pepper",
-                        "quantity": "To taste"
-                    }
-                ],
-                "instructions": [
-                    "Preheat your oven to 180\u00b0C (350\u00b0F).",
-                    "Separate the egg yolks from the whites. Beat the egg whites until stiff peaks form.",
-                    "In a large oven-safe skillet, melt butter over medium heat. Add spinach and mushrooms and cook until softened.",
-                    "In a separate bowl, beat the egg yolks. Stir in the cheese, cooked vegetables, salt, and pepper.",
-                    "Gently fold in the egg whites into the yolk mixture. Pour the mixture into the skillet.",
-                    "Place the skillet in the preheated oven and bake for 20-25 minutes until the omelette is puffed and lightly browned on top.",
-                    "Serve the souffl\u00e9 omelette immediately as it will start to deflate after a few minutes."
-                ]
-            },
-            {
-                "title": "Cheesy Bacon and Po",
-                "main_ingredient": "Cheese",
+                "title": "Bacon Potato Breakfast Skille",
+                "main_ingredient": "Potatoes",
                 "recipe_complexity": "Medium",
                 "recipe_type": "Breakfast",
                 "rating": null,
                 "ingredients": [
                     {
                         "item": "Potatoes",
-                        "quantity": "4 medium"
+                        "quantity": "500 g"
                     },
+                    {
+                        "item": "Bacon",
+                        "quantity": "200 g"
+                    },
+                    {
+                        "item": "Carrots",
+                        "quantity": "100 g"
+                    },
+                    {
+                        "item": "Cheddar Cheese",
+                        "quantity": "100 g"
+                    },
+                    {
+                        "item": "Eggs",
+                        "quantity": "4"
+                    },
+                    {
+                        "item": "Salt",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Black Pepper",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Butter",
+                        "quantity": "2 tbsp"
+                    },
+                    {
+                        "item": "Mixed Fresh Fruits",
+                        "quantity": "to serve"
+                    }
+                ],
+                "instructions": [
+                    "Peel and dice the potatoes and carrots into small cubes.",
+                    "In a large skillet, cook the bacon over medium heat until crispy. Remove and set aside.",
+                    "In the same skillet, add butter and saut\u00e9 the potatoes and carrots until they are tender and golden brown, about 10-15 minutes.",
+                    "In a separate bowl, beat the eggs with salt and pepper to taste.",
+                    "Pour the eggs over the potato and carrot mixture in the skillet, and cook until the eggs are set.",
+                    "Sprinkle cheddar cheese over the top and cook until melted.",
+                    "Crumble the crispy bacon and sprinkle over the skillet.",
+                    "Serve hot with a side of mixed fresh fruits."
+                ]
+            },
+            {
+                "title": "Bacon Mac & Cheese Breakfast",
+                "main_ingredient": "Bacon",
+                "recipe_complexity": "Medium",
+                "recipe_type": "Breakfast",
+                "rating": null,
+                "ingredients": [
                     {
                         "item": "Bacon",
                         "quantity": "8 slices"
                     },
                     {
+                        "item": "Ground Beef",
+                        "quantity": "500 g"
+                    },
+                    {
+                        "item": "Macaroni and Cheese",
+                        "quantity": "2 cups, prepared"
+                    },
+                    {
+                        "item": "Potatoes",
+                        "quantity": "2, large"
+                    },
+                    {
+                        "item": "Carrots",
+                        "quantity": "2, medium"
+                    },
+                    {
                         "item": "Cheddar Cheese",
-                        "quantity": "2 cups"
+                        "quantity": "4 slices"
+                    },
+                    {
+                        "item": "Burger Buns",
+                        "quantity": "4"
+                    },
+                    {
+                        "item": "Mixed Fruits",
+                        "quantity": "2 cups, assorted"
+                    },
+                    {
+                        "item": "Salt",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Pepper",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Olive Oil",
+                        "quantity": "2 tbsp"
+                    }
+                ],
+                "instructions": [
+                    "Preheat a skillet over medium heat and cook bacon until crispy. Set aside on paper towels.",
+                    "In a bowl, season ground beef with salt and pepper, then form into 4 patties.",
+                    "In the same skillet, cook the beef patties over medium-high heat until browned and cooked through, about 4-5 minutes per side.",
+                    "While the burgers are cooking, peel and grate the potatoes and carrots.",
+                    "Heat olive oil in a separate pan and add the grated potatoes and carrots. Cook until crispy and golden brown. Season with salt and pepper.",
+                    "Prepare macaroni and cheese according to package instructions if not already done.",
+                    "Assemble the burgers: Place a beef patty on the bottom half of each bun, top with a slice of cheddar cheese, a scoop of macaroni and cheese, and two slices of bacon.",
+                    "Top with crispy potato and carrot mixture, then place the other half of the bun on top.",
+                    "Serve each burger with a side of mixed fruits for a refreshing contrast."
+                ]
+            },
+            {
+                "title": "Bacon Wrapped Burger Sliders",
+                "main_ingredient": "Bacon",
+                "recipe_complexity": "Medium",
+                "recipe_type": "Dinner",
+                "rating": 0,
+                "ingredients": [
+                    {
+                        "item": "Ground Beef",
+                        "quantity": "500 g"
+                    },
+                    {
+                        "item": "Bacon",
+                        "quantity": "16 slices"
+                    },
+                    {
+                        "item": "Burger Buns",
+                        "quantity": "8 small"
+                    },
+                    {
+                        "item": "Cheddar Cheese Slices",
+                        "quantity": "8 slices"
+                    },
+                    {
+                        "item": "Potatoes",
+                        "quantity": "500 g"
+                    },
+                    {
+                        "item": "Carrots",
+                        "quantity": "2 medium"
+                    },
+                    {
+                        "item": "Mixed Fruits (e.g., apples, grapes)",
+                        "quantity": "1 cup"
+                    },
+                    {
+                        "item": "Mayonnaise",
+                        "quantity": "1/2 cup"
+                    },
+                    {
+                        "item": "Salt",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Pepper",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Macaroni",
+                        "quantity": "100 g"
+                    }
+                ],
+                "instructions": [
+                    "Preheat the oven to 200\u00b0C (400\u00b0F).",
+                    "Form ground beef into 8 small patties.",
+                    "Wrap each patty with 2 slices of bacon, securing with toothpicks if necessary.",
+                    "Place the bacon-wrapped patties on a baking sheet and bake for 20-25 minutes or until the bacon is crispy and the burgers are cooked through.",
+                    "While the burgers are baking, peel and dice the potatoes and carrots.",
+                    "Boil the potatoes and carrots until tender. Drain and let cool.",
+                    "Cook the macaroni according to package instructions. Drain and let cool.",
+                    "In a large bowl, combine the cooled potatoes, carrots, macaroni, and mixed fruits.",
+                    "Add mayonnaise, salt, and pepper to the salad and mix well.",
+                    "Once the burgers are done, place a slice of cheddar cheese on each patty and return to the oven for 2 minutes until melted.",
+                    "Assemble the sliders by placing each patty on a small burger bun.",
+                    "Serve the bacon-wrapped burger sliders with the fruity potato salad on the side."
+                ]
+            },
+            {
+                "title": "Bacon Potato Breakfast Casser",
+                "main_ingredient": "Potatoes",
+                "recipe_complexity": "Medium",
+                "recipe_type": "Family Breakfast",
+                "rating": null,
+                "ingredients": [
+                    {
+                        "item": "Potatoes",
+                        "quantity": "4 large, peeled and diced"
+                    },
+                    {
+                        "item": "Bacon",
+                        "quantity": "200 g, cooked and crumbled"
+                    },
+                    {
+                        "item": "Carrots",
+                        "quantity": "2, grated"
+                    },
+                    {
+                        "item": "Macaroni",
+                        "quantity": "1 cup, cooked"
+                    },
+                    {
+                        "item": "Cheddar Cheese",
+                        "quantity": "1 cup, shredded"
                     },
                     {
                         "item": "Eggs",
@@ -510,7 +329,7 @@
                     },
                     {
                         "item": "Milk",
-                        "quantity": "1/2 cup"
+                        "quantity": "1 cup"
                     },
                     {
                         "item": "Salt",
@@ -521,76 +340,310 @@
                         "quantity": "1/2 tsp"
                     },
                     {
-                        "item": "Carrots",
-                        "quantity": "2"
-                    },
-                    {
-                        "item": "Fruit (your choice)",
-                        "quantity": "to serve"
+                        "item": "Mixed Fruits",
+                        "quantity": "1 cup, chopped (for serving)"
                     }
                 ],
                 "instructions": [
                     "Preheat your oven to 180\u00b0C (350\u00b0F).",
-                    "Peel and grate the potatoes and carrots. Set aside.",
-                    "Cook bacon until crispy. Crumble and set aside.",
-                    "In a bowl, beat eggs, milk, salt, and pepper. Stir in the grated potatoes, carrots, crumbled bacon, and 1 1/2 cups of the cheese.",
-                    "Pour the mixture into a greased baking dish. Top with the remaining cheese.",
-                    "Bake for 45-50 minutes until golden brown and a knife inserted near the center comes out clean.",
-                    "Let it stand for 10 minutes before serving. Serve with fresh fruit on the side."
+                    "In a large bowl, whisk together eggs, milk, salt, and pepper.",
+                    "Add diced potatoes, grated carrots, cooked macaroni, crumbled bacon, and half of the cheese. Mix well.",
+                    "Pour the mixture into a greased baking dish.",
+                    "Sprinkle the remaining cheese over the top.",
+                    "Bake for 35-40 minutes, or until the casserole is set and the top is golden brown.",
+                    "Let it cool slightly before serving.",
+                    "Serve with a side of mixed fruits for a complete breakfast."
                 ]
             },
             {
-                "title": "Football Game Touch",
-                "main_ingredient": "Potatoes and Bacon",
-                "recipe_complexity": "Easy",
-                "recipe_type": "Football Game",
+                "title": "Bacon & Cheese Stuffed Potato",
+                "main_ingredient": "Potatoes",
+                "recipe_complexity": "Medium",
+                "recipe_type": "Family Dinner",
                 "rating": null,
                 "ingredients": [
                     {
-                        "item": "Potatoes",
-                        "quantity": "4 large"
+                        "item": "Large Potatoes",
+                        "quantity": "4"
                     },
                     {
                         "item": "Bacon",
-                        "quantity": "8 slices"
+                        "quantity": "8 strips"
+                    },
+                    {
+                        "item": "Cheddar Cheese",
+                        "quantity": "200 g, shredded"
                     },
                     {
                         "item": "Carrots",
-                        "quantity": "2 large"
+                        "quantity": "2, grated"
                     },
                     {
-                        "item": "Macaroni and Cheese",
-                        "quantity": "1 box"
+                        "item": "Butter",
+                        "quantity": "50 g"
+                    },
+                    {
+                        "item": "Milk",
+                        "quantity": "50 ml"
+                    },
+                    {
+                        "item": "Salt",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Black Pepper",
+                        "quantity": "to taste"
                     },
                     {
                         "item": "Mixed Fruits",
-                        "quantity": "2 cups"
-                    },
-                    {
-                        "item": "Taco shells",
-                        "quantity": "8"
-                    },
-                    {
-                        "item": "Cheese",
-                        "quantity": "1 cup"
-                    },
-                    {
-                        "item": "Sour cream",
-                        "quantity": "1/2 cup"
-                    },
-                    {
-                        "item": "Salsa",
-                        "quantity": "1 cup"
+                        "quantity": "for garnish (optional)"
                     }
                 ],
                 "instructions": [
                     "Preheat your oven to 200\u00b0C (400\u00b0F).",
-                    "Chop potatoes and carrots into small cubes and spread them on a baking tray. Sprinkle with olive oil, salt, and pepper. Roast for 20 minutes.",
-                    "While the vegetables are roasting, prepare the macaroni and cheese according to the box instructions. Set aside.",
-                    "Cook the bacon in a pan until crispy. Set aside.",
-                    "Once vegetables are done roasting, remove from oven and set aside.",
-                    "To assemble the tacos, spread a layer of macaroni and cheese in each taco shell. Top with roasted vegetables, crumbled bacon, cheese, salsa, and a dollop of sour cream.",
-                    "Serve with a side of mixed fruits for a refreshing contrast."
+                    "Wash and dry the potatoes. Prick them with a fork and bake them directly on the oven rack for 45 minutes or until tender.",
+                    "While the potatoes are baking, fry the bacon in a skillet until crispy. Remove and crumble once cooled.",
+                    "In the same skillet, lightly saut\u00e9 the grated carrots until tender.",
+                    "Once potatoes are done, let them cool slightly, then cut in half lengthwise and scoop out the insides, leaving a thin shell.",
+                    "In a bowl, mash the potato insides with butter, milk, salt, and pepper.",
+                    "Mix in half of the shredded cheese, crumbled bacon, and saut\u00e9ed carrots.",
+                    "Spoon the mixture back into the potato shells and top with the remaining cheese.",
+                    "Place the stuffed potatoes back in the oven and bake for another 15 minutes until the cheese is melted and bubbly.",
+                    "Garnish with mixed fruits on the side if desired and serve warm."
+                ]
+            },
+            {
+                "title": "Breakfast/Dinner Meal Plan",
+                "main_ingredient": "Various",
+                "recipe_complexity": "Average",
+                "recipe_type": "Meal Plan",
+                "rating": null,
+                "recipes": [
+                    {
+                        "title": "Bacon Potato Breakfast Skille",
+                        "main_ingredient": "Potatoes",
+                        "recipe_complexity": "Medium",
+                        "recipe_type": "Breakfast",
+                        "rating": null,
+                        "ingredients": [
+                            {
+                                "item": "Potatoes",
+                                "quantity": "500 g"
+                            },
+                            {
+                                "item": "Bacon",
+                                "quantity": "200 g"
+                            },
+                            {
+                                "item": "Carrots",
+                                "quantity": "100 g"
+                            },
+                            {
+                                "item": "Cheddar Cheese",
+                                "quantity": "100 g"
+                            },
+                            {
+                                "item": "Eggs",
+                                "quantity": "4"
+                            },
+                            {
+                                "item": "Salt",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Black Pepper",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Butter",
+                                "quantity": "2 tbsp"
+                            },
+                            {
+                                "item": "Mixed Fresh Fruits",
+                                "quantity": "to serve"
+                            }
+                        ],
+                        "instructions": [
+                            "Peel and dice the potatoes and carrots into small cubes.",
+                            "In a large skillet, cook the bacon over medium heat until crispy. Remove and set aside.",
+                            "In the same skillet, add butter and saut\u00e9 the potatoes and carrots until they are tender and golden brown, about 10-15 minutes.",
+                            "In a separate bowl, beat the eggs with salt and pepper to taste.",
+                            "Pour the eggs over the potato and carrot mixture in the skillet, and cook until the eggs are set.",
+                            "Sprinkle cheddar cheese over the top and cook until melted.",
+                            "Crumble the crispy bacon and sprinkle over the skillet.",
+                            "Serve hot with a side of mixed fresh fruits."
+                        ]
+                    },
+                    {
+                        "title": "Bacon Mac & Cheese Breakfast",
+                        "main_ingredient": "Bacon",
+                        "recipe_complexity": "Medium",
+                        "recipe_type": "Breakfast",
+                        "rating": null,
+                        "ingredients": [
+                            {
+                                "item": "Bacon",
+                                "quantity": "8 slices"
+                            },
+                            {
+                                "item": "Ground Beef",
+                                "quantity": "500 g"
+                            },
+                            {
+                                "item": "Macaroni and Cheese",
+                                "quantity": "2 cups, prepared"
+                            },
+                            {
+                                "item": "Potatoes",
+                                "quantity": "2, large"
+                            },
+                            {
+                                "item": "Carrots",
+                                "quantity": "2, medium"
+                            },
+                            {
+                                "item": "Cheddar Cheese",
+                                "quantity": "4 slices"
+                            },
+                            {
+                                "item": "Burger Buns",
+                                "quantity": "4"
+                            },
+                            {
+                                "item": "Mixed Fruits",
+                                "quantity": "2 cups, assorted"
+                            },
+                            {
+                                "item": "Salt",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Pepper",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Olive Oil",
+                                "quantity": "2 tbsp"
+                            }
+                        ],
+                        "instructions": [
+                            "Preheat a skillet over medium heat and cook bacon until crispy. Set aside on paper towels.",
+                            "In a bowl, season ground beef with salt and pepper, then form into 4 patties.",
+                            "In the same skillet, cook the beef patties over medium-high heat until browned and cooked through, about 4-5 minutes per side.",
+                            "While the burgers are cooking, peel and grate the potatoes and carrots.",
+                            "Heat olive oil in a separate pan and add the grated potatoes and carrots. Cook until crispy and golden brown. Season with salt and pepper.",
+                            "Prepare macaroni and cheese according to package instructions if not already done.",
+                            "Assemble the burgers: Place a beef patty on the bottom half of each bun, top with a slice of cheddar cheese, a scoop of macaroni and cheese, and two slices of bacon.",
+                            "Top with crispy potato and carrot mixture, then place the other half of the bun on top.",
+                            "Serve each burger with a side of mixed fruits for a refreshing contrast."
+                        ]
+                    },
+                    {
+                        "title": "Hamburgers",
+                        "main_ingredient": "Beef",
+                        "recipe_complexity": "Hard",
+                        "recipe_type": "Weekend Dinner",
+                        "rating": 4,
+                        "ingredients": [
+                            {
+                                "item": "Ground Beef",
+                                "quantity": "250 g"
+                            },
+                            {
+                                "item": "Burger Buns",
+                                "quantity": "1 bun"
+                            },
+                            {
+                                "item": "Cheddar Cheese",
+                                "quantity": "2 slices"
+                            },
+                            {
+                                "item": "Lettuce",
+                                "quantity": "2 leaves"
+                            },
+                            {
+                                "item": "Tomato",
+                                "quantity": "1 slice"
+                            },
+                            {
+                                "item": "Onion",
+                                "quantity": "1 slice"
+                            }
+                        ],
+                        "instructions": [
+                            "Form the ground beef into patties.",
+                            "Season with salt and pepper.",
+                            "Grill or pan-fry the patties for about 5 minutes per side.",
+                            "Assemble the burger with buns, cheese, lettuce, tomato, and onion."
+                        ]
+                    },
+                    {
+                        "title": "Bacon Wrapped Burger Sliders",
+                        "main_ingredient": "Bacon",
+                        "recipe_complexity": "Medium",
+                        "recipe_type": "Dinner",
+                        "rating": 0,
+                        "ingredients": [
+                            {
+                                "item": "Ground Beef",
+                                "quantity": "500 g"
+                            },
+                            {
+                                "item": "Bacon",
+                                "quantity": "16 slices"
+                            },
+                            {
+                                "item": "Burger Buns",
+                                "quantity": "8 small"
+                            },
+                            {
+                                "item": "Cheddar Cheese Slices",
+                                "quantity": "8 slices"
+                            },
+                            {
+                                "item": "Potatoes",
+                                "quantity": "500 g"
+                            },
+                            {
+                                "item": "Carrots",
+                                "quantity": "2 medium"
+                            },
+                            {
+                                "item": "Mixed Fruits (e.g., apples, grapes)",
+                                "quantity": "1 cup"
+                            },
+                            {
+                                "item": "Mayonnaise",
+                                "quantity": "1/2 cup"
+                            },
+                            {
+                                "item": "Salt",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Pepper",
+                                "quantity": "to taste"
+                            },
+                            {
+                                "item": "Macaroni",
+                                "quantity": "100 g"
+                            }
+                        ],
+                        "instructions": [
+                            "Preheat the oven to 200\u00b0C (400\u00b0F).",
+                            "Form ground beef into 8 small patties.",
+                            "Wrap each patty with 2 slices of bacon, securing with toothpicks if necessary.",
+                            "Place the bacon-wrapped patties on a baking sheet and bake for 20-25 minutes or until the bacon is crispy and the burgers are cooked through.",
+                            "While the burgers are baking, peel and dice the potatoes and carrots.",
+                            "Boil the potatoes and carrots until tender. Drain and let cool.",
+                            "Cook the macaroni according to package instructions. Drain and let cool.",
+                            "In a large bowl, combine the cooled potatoes, carrots, macaroni, and mixed fruits.",
+                            "Add mayonnaise, salt, and pepper to the salad and mix well.",
+                            "Once the burgers are done, place a slice of cheddar cheese on each patty and return to the oven for 2 minutes until melted.",
+                            "Assemble the sliders by placing each patty on a small burger bun.",
+                            "Serve the bacon-wrapped burger sliders with the fruity potato salad on the side."
+                        ]
+                    }
                 ]
             }
         ]
