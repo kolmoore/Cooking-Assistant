@@ -1,0 +1,3 @@
+tkinter  # Standard library, usually comes with Python installations
+requests
+python-dotenv

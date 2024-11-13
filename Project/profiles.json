@@ -645,6 +645,74 @@
                         ]
                     }
                 ]
+            },
+            {
+                "title": "Bacon Mac & Cheese with Potat",
+                "main_ingredient": "Bacon",
+                "recipe_complexity": "Medium",
+                "recipe_type": "Family Dinner",
+                "rating": null,
+                "ingredients": [
+                    {
+                        "item": "Macaroni",
+                        "quantity": "300 g"
+                    },
+                    {
+                        "item": "Cheddar Cheese",
+                        "quantity": "200 g, grated"
+                    },
+                    {
+                        "item": "Milk",
+                        "quantity": "250 ml"
+                    },
+                    {
+                        "item": "Butter",
+                        "quantity": "30 g"
+                    },
+                    {
+                        "item": "Flour",
+                        "quantity": "2 tbsp"
+                    },
+                    {
+                        "item": "Bacon",
+                        "quantity": "200 g, chopped"
+                    },
+                    {
+                        "item": "Potatoes",
+                        "quantity": "3 medium, boiled and diced"
+                    },
+                    {
+                        "item": "Carrots",
+                        "quantity": "2 medium, grated"
+                    },
+                    {
+                        "item": "Apple",
+                        "quantity": "1 large, diced"
+                    },
+                    {
+                        "item": "Mayonnaise",
+                        "quantity": "3 tbsp"
+                    },
+                    {
+                        "item": "Salt",
+                        "quantity": "to taste"
+                    },
+                    {
+                        "item": "Black Pepper",
+                        "quantity": "to taste"
+                    }
+                ],
+                "instructions": [
+                    "Cook the macaroni according to the package instructions. Drain and set aside.",
+                    "In a saucepan, melt the butter over medium heat, then add flour and stir to make a roux. Cook for 1-2 minutes.",
+                    "Gradually add milk to the roux, whisking continuously to avoid lumps. Cook until the mixture thickens.",
+                    "Add grated cheddar cheese to the sauce, stirring until melted and smooth. Season with salt and pepper.",
+                    "In a skillet, cook the chopped bacon until crispy. Remove and drain on paper towels.",
+                    "Mix the cooked macaroni with the cheese sauce and bacon. Adjust seasoning if necessary.",
+                    "For the salad, combine diced potatoes, grated carrots, and diced apple in a large bowl.",
+                    "Add mayonnaise, salt, and pepper to the salad. Mix well to combine.",
+                    "Serve the Bacon Mac & Cheese with the Potato and Carrot Salad on the side."
+                ]
             }
         ]
     }
