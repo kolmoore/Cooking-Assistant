@@ -24,16 +24,6 @@ class SmartKitchenAssistantApp(tk.Tk):
         self.family_profiles = {}  # Initialize family profiles
         self.load_profiles()  # Load profiles on startup
 
-        # Initialize default recipe placeholder
-        self.recipe = {
-            "title": "Select Recipe",
-            "ingredients": "None Yet",
-            "instructions": "None Yet",
-            "servings": "4",  # Placeholder for servings
-            "prep_time": "10 minutes",  # Placeholder for preparation time
-            "cook_time": "15 minutes"  # Placeholder for cooking time
-        }
-
         # Initialize StringVar for UI elements
         self.family_name_variable = tk.StringVar()
         self.member_name_variable = tk.StringVar()
@@ -48,9 +38,10 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         self.family_selected = 0  # Track family selection state
         self.title("Smart Kitchen Assistant")  # Set window title
+        self.configure(bg='#FFFAE3')  # Set background color to a light warm tone
 
         # Create the main content frame
-        self.main_content_frame = tk.Frame(self)
+        self.main_content_frame = tk.Frame(self, bg='#FFFAE3')
         self.main_content_frame.pack(side=tk.RIGHT, fill=tk.BOTH, expand=True)
 
         # Show the welcome screen initially
@@ -64,12 +55,12 @@ class SmartKitchenAssistantApp(tk.Tk):
 
         # Placeholder for the logo image
         logo_image = tk.PhotoImage(file="Project/HomeScreen.png")  # Update with your logo path
-        logo_label = tk.Label(self.main_content_frame, image=logo_image)
+        logo_label = tk.Label(self.main_content_frame, image=logo_image, bg='#FFFAE3')
         logo_label.image = logo_image  # Keep a reference to avoid garbage collection
         logo_label.grid(row=0, column=0, columnspan=4, pady=10)
 
         # Family Dropdown
-        family_dropdown_label = tk.Label(self.main_content_frame, text="Select Family: ", font=("Helvetica", 14, 'bold'))
+        family_dropdown_label = tk.Label(self.main_content_frame, text="Select Family: ", font=("Helvetica", 14, 'bold'), bg='#FFFAE3', fg='#B65E3D')
         family_dropdown_label.grid(row=1, column=0, padx=10, pady=10)
 
         self.family_dropdown = ttk.Combobox(self.main_content_frame, textvariable=self.family_name_variable, state='readonly', font=("Helvetica", 14))
