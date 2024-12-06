@@ -48,7 +48,7 @@ To set up the Smart Kitchen Assistant on your local machine, follow these steps:
    OPENAI_API_KEY=your_api_key_here
 
 5. **Run the application**:
-   python app.py
+   main.py
 
 
 ## Usage

@@ -23,8 +23,8 @@ The Smart Kitchen Assistant is a user-friendly application that allows families 
 ## Getting Started
 
 1. **Installation**: Follow the installation instructions in the `README.md` file to set up the application on your local machine.
-2. **Launch the Application**: Run the application by executing the following command in your terminal:
-   python app.py
+2. **Open AI API**: For full functionality the user needs to order a project API key via https://platform.openai.com/account/api-keys.
+3. **Launch the Application**: Run the application by executing the following command in your terminal: main.py
 
 ## Features
 
@@ -37,6 +37,8 @@ The Smart Kitchen Assistant is a user-friendly application that allows families 
 ## Navigating the Application
 
 Upon launching, you will see the welcome screen, which allows you to select a family or add a new one. Use the navigation buttons to access different sections of the application.
+
+<img src="images/welcome_screen.png" alt="Welcome Screen" width="300" height="400">
 
 ## Managing Families
 
@@ -56,6 +58,16 @@ Upon launching, you will see the welcome screen, which allows you to select a fa
 
 1. Select the family from the dropdown menu.
 2. Click the **Remove** button and confirm the action.
+
+### Selecting a family
+
+1. Select the family from the dropdown menu.
+2. Click the **Select** button to move to the **Main Menu**
+
+
+### Main Menu
+
+<img src="images/main_menu.png" alt="Main Menu" width="300" height="200">
 
 ## Managing Recipes
 
@@ -91,9 +103,14 @@ You can sort recipes by type, complexity, rating, and main ingredient using the 
 2. Click the **Get Grocery List** button.
 3. A new window will display the grocery list based on the selected item.
 
+
+### Edit Member Screen
+
+<img src="images/edit_users.png" alt="Edit Users" width="300" height="200">
+
 ## Editing Family Members
 
-1. Navigate to the **Edit Family** screen.
+1. Click **Edit Family** on the **Main Menu** to navigate to the **Edit Family** screen.
 2. Use the dropdown to select a family member.
 3. Click **Edit Member** to modify their details.
 4. Add dietary restrictions and favorite foods as needed.
